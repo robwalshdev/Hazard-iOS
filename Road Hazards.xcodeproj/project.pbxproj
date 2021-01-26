@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131946825C062E000ED7533 /* Road_HazardsApp.swift */; };
+		3131946B25C062E000ED7533 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131946A25C062E000ED7533 /* ContentView.swift */; };
+		3131946D25C062E100ED7533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3131946C25C062E100ED7533 /* Assets.xcassets */; };
+		3131947025C062E100ED7533 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3131946F25C062E100ED7533 /* Preview Assets.xcassets */; };
+		3131947B25C062E100ED7533 /* Road_HazardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131947A25C062E100ED7533 /* Road_HazardsTests.swift */; };
+		3131948625C062E100ED7533 /* Road_HazardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131948525C062E100ED7533 /* Road_HazardsUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3131947725C062E100ED7533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3131945D25C062E000ED7533 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3131946425C062E000ED7533;
+			remoteInfo = "Road Hazards";
+		};
+		3131948225C062E100ED7533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3131945D25C062E000ED7533 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3131946425C062E000ED7533;
+			remoteInfo = "Road Hazards";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3131946525C062E000ED7533 /* Road Hazards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Road Hazards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3131946825C062E000ED7533 /* Road_HazardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsApp.swift; sourceTree = "<group>"; };
+		3131946A25C062E000ED7533 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3131946C25C062E100ED7533 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3131946F25C062E100ED7533 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3131947125C062E100ED7533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3131947625C062E100ED7533 /* Road HazardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Road HazardsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3131947A25C062E100ED7533 /* Road_HazardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsTests.swift; sourceTree = "<group>"; };
+		3131947C25C062E100ED7533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3131948125C062E100ED7533 /* Road HazardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Road HazardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3131948525C062E100ED7533 /* Road_HazardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsUITests.swift; sourceTree = "<group>"; };
+		3131948725C062E100ED7533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3131946225C062E000ED7533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3131947325C062E100ED7533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3131947E25C062E100ED7533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3131945C25C062E000ED7533 = {
+			isa = PBXGroup;
+			children = (
+				3131946725C062E000ED7533 /* Road Hazards */,
+				3131947925C062E100ED7533 /* Road HazardsTests */,
+				3131948425C062E100ED7533 /* Road HazardsUITests */,
+				3131946625C062E000ED7533 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3131946625C062E000ED7533 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3131946525C062E000ED7533 /* Road Hazards.app */,
+				3131947625C062E100ED7533 /* Road HazardsTests.xctest */,
+				3131948125C062E100ED7533 /* Road HazardsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3131946725C062E000ED7533 /* Road Hazards */ = {
+			isa = PBXGroup;
+			children = (
+				3131946825C062E000ED7533 /* Road_HazardsApp.swift */,
+				3131946A25C062E000ED7533 /* ContentView.swift */,
+				3131946C25C062E100ED7533 /* Assets.xcassets */,
+				3131947125C062E100ED7533 /* Info.plist */,
+				3131946E25C062E100ED7533 /* Preview Content */,
+			);
+			path = "Road Hazards";
+			sourceTree = "<group>";
+		};
+		3131946E25C062E100ED7533 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3131946F25C062E100ED7533 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3131947925C062E100ED7533 /* Road HazardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				3131947A25C062E100ED7533 /* Road_HazardsTests.swift */,
+				3131947C25C062E100ED7533 /* Info.plist */,
+			);
+			path = "Road HazardsTests";
+			sourceTree = "<group>";
+		};
+		3131948425C062E100ED7533 /* Road HazardsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3131948525C062E100ED7533 /* Road_HazardsUITests.swift */,
+				3131948725C062E100ED7533 /* Info.plist */,
+			);
+			path = "Road HazardsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3131946425C062E000ED7533 /* Road Hazards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3131948A25C062E100ED7533 /* Build configuration list for PBXNativeTarget "Road Hazards" */;
+			buildPhases = (
+				3131946125C062E000ED7533 /* Sources */,
+				3131946225C062E000ED7533 /* Frameworks */,
+				3131946325C062E000ED7533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Road Hazards";
+			productName = "Road Hazards";
+			productReference = 3131946525C062E000ED7533 /* Road Hazards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3131947525C062E100ED7533 /* Road HazardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3131948D25C062E100ED7533 /* Build configuration list for PBXNativeTarget "Road HazardsTests" */;
+			buildPhases = (
+				3131947225C062E100ED7533 /* Sources */,
+				3131947325C062E100ED7533 /* Frameworks */,
+				3131947425C062E100ED7533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3131947825C062E100ED7533 /* PBXTargetDependency */,
+			);
+			name = "Road HazardsTests";
+			productName = "Road HazardsTests";
+			productReference = 3131947625C062E100ED7533 /* Road HazardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3131948025C062E100ED7533 /* Road HazardsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3131949025C062E100ED7533 /* Build configuration list for PBXNativeTarget "Road HazardsUITests" */;
+			buildPhases = (
+				3131947D25C062E100ED7533 /* Sources */,
+				3131947E25C062E100ED7533 /* Frameworks */,
+				3131947F25C062E100ED7533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3131948325C062E100ED7533 /* PBXTargetDependency */,
+			);
+			name = "Road HazardsUITests";
+			productName = "Road HazardsUITests";
+			productReference = 3131948125C062E100ED7533 /* Road HazardsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3131945D25C062E000ED7533 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					3131946425C062E000ED7533 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					3131947525C062E100ED7533 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 3131946425C062E000ED7533;
+					};
+					3131948025C062E100ED7533 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 3131946425C062E000ED7533;
+					};
+				};
+			};
+			buildConfigurationList = 3131946025C062E000ED7533 /* Build configuration list for PBXProject "Road Hazards" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3131945C25C062E000ED7533;
+			productRefGroup = 3131946625C062E000ED7533 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3131946425C062E000ED7533 /* Road Hazards */,
+				3131947525C062E100ED7533 /* Road HazardsTests */,
+				3131948025C062E100ED7533 /* Road HazardsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3131946325C062E000ED7533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3131947025C062E100ED7533 /* Preview Assets.xcassets in Resources */,
+				3131946D25C062E100ED7533 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3131947425C062E100ED7533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3131947F25C062E100ED7533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3131946125C062E000ED7533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3131946B25C062E000ED7533 /* ContentView.swift in Sources */,
+				3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3131947225C062E100ED7533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3131947B25C062E100ED7533 /* Road_HazardsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3131947D25C062E100ED7533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3131948625C062E100ED7533 /* Road_HazardsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3131947825C062E100ED7533 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3131946425C062E000ED7533 /* Road Hazards */;
+			targetProxy = 3131947725C062E100ED7533 /* PBXContainerItemProxy */;
+		};
+		3131948325C062E100ED7533 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3131946425C062E000ED7533 /* Road Hazards */;
+			targetProxy = 3131948225C062E100ED7533 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3131948825C062E100ED7533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3131948925C062E100ED7533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3131948B25C062E100ED7533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Road Hazards/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Road Hazards/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robert-walsh.Road-Hazards";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3131948C25C062E100ED7533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Road Hazards/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Road Hazards/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robert-walsh.Road-Hazards";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3131948E25C062E100ED7533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Road HazardsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robert-walsh.Road-HazardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Road Hazards.app/Road Hazards";
+			};
+			name = Debug;
+		};
+		3131948F25C062E100ED7533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Road HazardsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robert-walsh.Road-HazardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Road Hazards.app/Road Hazards";
+			};
+			name = Release;
+		};
+		3131949125C062E100ED7533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Road HazardsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robert-walsh.Road-HazardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Road Hazards";
+			};
+			name = Debug;
+		};
+		3131949225C062E100ED7533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Road HazardsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "robert-walsh.Road-HazardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Road Hazards";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3131946025C062E000ED7533 /* Build configuration list for PBXProject "Road Hazards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3131948825C062E100ED7533 /* Debug */,
+				3131948925C062E100ED7533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3131948A25C062E100ED7533 /* Build configuration list for PBXNativeTarget "Road Hazards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3131948B25C062E100ED7533 /* Debug */,
+				3131948C25C062E100ED7533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3131948D25C062E100ED7533 /* Build configuration list for PBXNativeTarget "Road HazardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3131948E25C062E100ED7533 /* Debug */,
+				3131948F25C062E100ED7533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3131949025C062E100ED7533 /* Build configuration list for PBXNativeTarget "Road HazardsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3131949125C062E100ED7533 /* Debug */,
+				3131949225C062E100ED7533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3131945D25C062E000ED7533 /* Project object */;
+}
