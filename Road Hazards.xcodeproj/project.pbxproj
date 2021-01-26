@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,11 @@
 		3131947025C062E100ED7533 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3131946F25C062E100ED7533 /* Preview Assets.xcassets */; };
 		3131947B25C062E100ED7533 /* Road_HazardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131947A25C062E100ED7533 /* Road_HazardsTests.swift */; };
 		3131948625C062E100ED7533 /* Road_HazardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131948525C062E100ED7533 /* Road_HazardsUITests.swift */; };
+		3131949825C062F600ED7533 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3131949725C062F600ED7533 /* BottomBar-SwiftUI */; };
+		313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194AD25C06B1900ED7533 /* HazardCard.swift */; };
+		313194B325C0C5E100ED7533 /* MainHazardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194B225C0C5E100ED7533 /* MainHazardCard.swift */; };
+		313194B925C0D01200ED7533 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 313194B825C0D01200ED7533 /* SwiftUICharts */; };
+		313194BE25C0D68700ED7533 /* ReportHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194BD25C0D68700ED7533 /* ReportHazard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,9 @@
 		3131948125C062E100ED7533 /* Road HazardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Road HazardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3131948525C062E100ED7533 /* Road_HazardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsUITests.swift; sourceTree = "<group>"; };
 		3131948725C062E100ED7533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		313194AD25C06B1900ED7533 /* HazardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazardCard.swift; sourceTree = "<group>"; };
+		313194B225C0C5E100ED7533 /* MainHazardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHazardCard.swift; sourceTree = "<group>"; };
+		313194BD25C0D68700ED7533 /* ReportHazard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHazard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3131949825C062F600ED7533 /* BottomBar-SwiftUI in Frameworks */,
+				313194B925C0D01200ED7533 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +107,9 @@
 			children = (
 				3131946825C062E000ED7533 /* Road_HazardsApp.swift */,
 				3131946A25C062E000ED7533 /* ContentView.swift */,
+				313194BD25C0D68700ED7533 /* ReportHazard.swift */,
+				313194AD25C06B1900ED7533 /* HazardCard.swift */,
+				313194B225C0C5E100ED7533 /* MainHazardCard.swift */,
 				3131946C25C062E100ED7533 /* Assets.xcassets */,
 				3131947125C062E100ED7533 /* Info.plist */,
 				3131946E25C062E100ED7533 /* Preview Content */,
@@ -146,6 +159,10 @@
 			dependencies = (
 			);
 			name = "Road Hazards";
+			packageProductDependencies = (
+				3131949725C062F600ED7533 /* BottomBar-SwiftUI */,
+				313194B825C0D01200ED7533 /* SwiftUICharts */,
+			);
 			productName = "Road Hazards";
 			productReference = 3131946525C062E000ED7533 /* Road Hazards.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +234,10 @@
 				Base,
 			);
 			mainGroup = 3131945C25C062E000ED7533;
+			packageReferences = (
+				3131949625C062F600ED7533 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
+				313194B725C0D01200ED7533 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 3131946625C062E000ED7533 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,7 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313194B325C0C5E100ED7533 /* MainHazardCard.swift in Sources */,
 				3131946B25C062E000ED7533 /* ContentView.swift in Sources */,
+				313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */,
+				313194BE25C0D68700ED7533 /* ReportHazard.swift in Sources */,
 				3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -419,6 +443,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Road Hazards/Preview Content\"";
+				DEVELOPMENT_TEAM = 6YN5PD453C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Road Hazards/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -440,6 +465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Road Hazards/Preview Content\"";
+				DEVELOPMENT_TEAM = 6YN5PD453C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Road Hazards/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -574,6 +600,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3131949625C062F600ED7533 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		313194B725C0D01200ED7533 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3131949725C062F600ED7533 /* BottomBar-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3131949625C062F600ED7533 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
+			productName = "BottomBar-SwiftUI";
+		};
+		313194B825C0D01200ED7533 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 313194B725C0D01200ED7533 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3131945D25C062E000ED7533 /* Project object */;
 }
