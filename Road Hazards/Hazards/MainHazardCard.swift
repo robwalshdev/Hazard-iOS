@@ -10,8 +10,12 @@ import MapKit
 
 struct MainHazardCard: View {
     @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 53.27194, longitude: -9.04889),
-        span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+        center: CLLocationCoordinate2D(
+            latitude: 53.27194,
+            longitude: -9.04889),
+        span: MKCoordinateSpan(
+            latitudeDelta: 0.2,
+            longitudeDelta: 0.2)
     )
     
     var body: some View {

@@ -10,36 +10,37 @@ import BottomBar_SwiftUI
 
 let items: [BottomBarItem] = [
     BottomBarItem(icon: "car.2.fill", title: "Hazards", color: .purple),
-    BottomBarItem(icon: "star.fill", title: "Following", color: .pink),
+    BottomBarItem(icon: "star.fill", title: "Following", color: .yellow),
     BottomBarItem(icon: "plus.circle", title: "Report", color: .red),
     BottomBarItem(icon: "person.fill", title: "Profile", color: .blue)
 ]
 
-struct BasicView: View {
-    let item: BottomBarItem
-
-    var detailText: String {
-        "\(item.title) Detail"
-    }
-    
+struct HomeView: View {
+    @State var hazards: [Hazard] = []
+        
     var body: some View {
         VStack {
             ScrollView(.vertical, showsIndicators: false, content: {
+                Spacer(minLength: 20)
+                
+                MainHazardCard()
+                    .padding(15)
+                Spacer(minLength: 40)
+                
                 VStack {
-                    Spacer(minLength: 20)
-                    MainHazardCard()
-                        .padding(15)
-                    Spacer(minLength: 40)
-                    ForEach(1..<10) { num in
-                        HazardCard(hazard: Hazard(hazardType: "Traffic", name: "Heavy Traffic \(num.description)", distance: "5km"))
-                            .padding(15)
+                    ForEach(hazards, id:\.hazardId) { hazard in
+                        HazardCard(hazard: hazard)
+                    }.padding(20)
+                }.onAppear {
+                    HazardApi().getHazards { (hazards) in
+                        self.hazards = hazards
                     }
                 }
             })
         }
     }
 }
-
+ 
 
 struct ContentView: View {
     @State private var selectedIndex: Int = 0
@@ -52,11 +53,10 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    BasicView(item: selectedItem)
+                    HomeView()
                         .navigationBarTitle(Text(selectedItem.title))
                     BottomBar(selectedIndex: $selectedIndex, items: items)
                 }
-                
             }
             
         }
