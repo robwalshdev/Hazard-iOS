@@ -15,8 +15,11 @@
 		3131948625C062E100ED7533 /* Road_HazardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131948525C062E100ED7533 /* Road_HazardsUITests.swift */; };
 		3131949825C062F600ED7533 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3131949725C062F600ED7533 /* BottomBar-SwiftUI */; };
 		313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194AD25C06B1900ED7533 /* HazardCard.swift */; };
-		313194B325C0C5E100ED7533 /* MainHazardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194B225C0C5E100ED7533 /* MainHazardCard.swift */; };
+		313194B325C0C5E100ED7533 /* HeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194B225C0C5E100ED7533 /* HeaderCard.swift */; };
 		313194B925C0D01200ED7533 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 313194B825C0D01200ED7533 /* SwiftUICharts */; };
+		315AD4BC25DFF52D004064D7 /* FilterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */; };
+		315CA83E25E43E3400533A86 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA83D25E43E3400533A86 /* LocationManager.swift */; };
+		315CA84925E43EBD00533A86 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA84825E43EBD00533A86 /* MapView.swift */; };
 		31751A3E25D2C7440030DB0F /* Hazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A3D25D2C7440030DB0F /* Hazard.swift */; };
 		31751A4E25D2E5470030DB0F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A4D25D2E5470030DB0F /* Extensions.swift */; };
 		31751A5725D2EAF00030DB0F /* Votes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A5625D2EAF00030DB0F /* Votes.swift */; };
@@ -53,7 +56,10 @@
 		3131948525C062E100ED7533 /* Road_HazardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsUITests.swift; sourceTree = "<group>"; };
 		3131948725C062E100ED7533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		313194AD25C06B1900ED7533 /* HazardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazardCard.swift; sourceTree = "<group>"; };
-		313194B225C0C5E100ED7533 /* MainHazardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHazardCard.swift; sourceTree = "<group>"; };
+		313194B225C0C5E100ED7533 /* HeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCard.swift; sourceTree = "<group>"; };
+		315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenuView.swift; sourceTree = "<group>"; };
+		315CA83D25E43E3400533A86 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		315CA84825E43EBD00533A86 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		31751A3D25D2C7440030DB0F /* Hazard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hazard.swift; sourceTree = "<group>"; };
 		31751A4D25D2E5470030DB0F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		31751A5625D2EAF00030DB0F /* Votes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Votes.swift; sourceTree = "<group>"; };
@@ -111,8 +117,11 @@
 			children = (
 				3131946825C062E000ED7533 /* Road_HazardsApp.swift */,
 				3131946A25C062E000ED7533 /* ContentView.swift */,
+				315CA83C25E43E2200533A86 /* Managers */,
+				31C5E68925E447EF0095D966 /* Header */,
 				31751A5225D2EA870030DB0F /* Hazards */,
 				31751A4D25D2E5470030DB0F /* Extensions.swift */,
+				315CA84825E43EBD00533A86 /* MapView.swift */,
 				3131946C25C062E100ED7533 /* Assets.xcassets */,
 				3131947125C062E100ED7533 /* Info.plist */,
 				3131946E25C062E100ED7533 /* Preview Content */,
@@ -146,15 +155,31 @@
 			path = "Road HazardsUITests";
 			sourceTree = "<group>";
 		};
+		315CA83C25E43E2200533A86 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				315CA83D25E43E3400533A86 /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		31751A5225D2EA870030DB0F /* Hazards */ = {
 			isa = PBXGroup;
 			children = (
 				31751A5625D2EAF00030DB0F /* Votes.swift */,
 				313194AD25C06B1900ED7533 /* HazardCard.swift */,
-				313194B225C0C5E100ED7533 /* MainHazardCard.swift */,
 				31751A3D25D2C7440030DB0F /* Hazard.swift */,
 			);
 			path = Hazards;
+			sourceTree = "<group>";
+		};
+		31C5E68925E447EF0095D966 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */,
+				313194B225C0C5E100ED7533 /* HeaderCard.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,12 +319,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313194B325C0C5E100ED7533 /* MainHazardCard.swift in Sources */,
+				313194B325C0C5E100ED7533 /* HeaderCard.swift in Sources */,
 				3131946B25C062E000ED7533 /* ContentView.swift in Sources */,
+				315AD4BC25DFF52D004064D7 /* FilterMenuView.swift in Sources */,
 				313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */,
 				3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */,
 				31751A3E25D2C7440030DB0F /* Hazard.swift in Sources */,
 				31751A4E25D2E5470030DB0F /* Extensions.swift in Sources */,
+				315CA84925E43EBD00533A86 /* MapView.swift in Sources */,
+				315CA83E25E43E3400533A86 /* LocationManager.swift in Sources */,
 				31751A5725D2EAF00030DB0F /* Votes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

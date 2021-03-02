@@ -12,37 +12,16 @@ struct Votes: View {
     let downVotes: Int
     
     var body: some View {
-        HStack(alignment: .center, spacing: 0) {
-            if upVotes >= downVotes {
-                Circle()
-                    .fill(Color("RedVote"))
-                    .frame(width: 20, height: 20)
-                    .shadow(radius: 5)
-                    .offset(x:50,y:10)
-                Circle()
-                    .fill(Color("GreenVote"))
-                    .frame(width: 40, height: 40)
-                    .shadow(radius: 5)
-            } else {
-                Circle()
-                    .fill(Color("GreenVote"))
-                    .frame(width: 20, height: 20)
-                    .shadow(radius: 5)
-                    .offset(x:50,y:10)
-                Circle()
-                    .fill(Color("RedVote"))
-                    .frame(width: 40, height: 40)
-                    .shadow(radius: 5)
-            }
-            
-            
-        }
-        
+        ProgressView(value: Double(upVotes), total:Double(upVotes + downVotes))
+            .progressViewStyle(LinearProgressViewStyle(tint: .green))
+            .background(Color.red)
+            .frame(maxWidth: screen.width - 120, maxHeight: 5, alignment: .center)
+            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
     }
 }
 
 struct Votes_Previews: PreviewProvider {
     static var previews: some View {
-        Votes(upVotes: 10, downVotes: 20)
+        Votes(upVotes: 50, downVotes: 20)
     }
 }
