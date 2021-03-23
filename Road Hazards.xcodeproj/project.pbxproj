@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,16 +13,20 @@
 		3131947025C062E100ED7533 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3131946F25C062E100ED7533 /* Preview Assets.xcassets */; };
 		3131947B25C062E100ED7533 /* Road_HazardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131947A25C062E100ED7533 /* Road_HazardsTests.swift */; };
 		3131948625C062E100ED7533 /* Road_HazardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131948525C062E100ED7533 /* Road_HazardsUITests.swift */; };
-		3131949825C062F600ED7533 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3131949725C062F600ED7533 /* BottomBar-SwiftUI */; };
 		313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194AD25C06B1900ED7533 /* HazardCard.swift */; };
 		313194B325C0C5E100ED7533 /* HeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194B225C0C5E100ED7533 /* HeaderCard.swift */; };
-		313194B925C0D01200ED7533 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 313194B825C0D01200ED7533 /* SwiftUICharts */; };
 		315AD4BC25DFF52D004064D7 /* FilterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */; };
 		315CA83E25E43E3400533A86 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA83D25E43E3400533A86 /* LocationManager.swift */; };
 		315CA84925E43EBD00533A86 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA84825E43EBD00533A86 /* MapView.swift */; };
+		31749E122604A68C00C3ADF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E112604A68C00C3ADF9 /* HomeView.swift */; };
+		31749E172604A6FC00C3ADF9 /* TabNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E162604A6FC00C3ADF9 /* TabNavigationView.swift */; };
+		31749E1D2604A80E00C3ADF9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E1C2604A80E00C3ADF9 /* LoginView.swift */; };
+		31749E222604CF7B00C3ADF9 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E212604CF7B00C3ADF9 /* UserAuth.swift */; };
 		31751A3E25D2C7440030DB0F /* Hazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A3D25D2C7440030DB0F /* Hazard.swift */; };
 		31751A4E25D2E5470030DB0F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A4D25D2E5470030DB0F /* Extensions.swift */; };
 		31751A5725D2EAF00030DB0F /* Votes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A5625D2EAF00030DB0F /* Votes.swift */; };
+		3197140125EED9B6006F82FE /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197140025EED9B6006F82FE /* ReportView.swift */; };
+		31EE2542260A855400C2EB0B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EE2541260A855400C2EB0B /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +64,15 @@
 		315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenuView.swift; sourceTree = "<group>"; };
 		315CA83D25E43E3400533A86 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		315CA84825E43EBD00533A86 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		31749E112604A68C00C3ADF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		31749E162604A6FC00C3ADF9 /* TabNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationView.swift; sourceTree = "<group>"; };
+		31749E1C2604A80E00C3ADF9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		31749E212604CF7B00C3ADF9 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		31751A3D25D2C7440030DB0F /* Hazard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hazard.swift; sourceTree = "<group>"; };
 		31751A4D25D2E5470030DB0F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		31751A5625D2EAF00030DB0F /* Votes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Votes.swift; sourceTree = "<group>"; };
+		3197140025EED9B6006F82FE /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		31EE2541260A855400C2EB0B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3131949825C062F600ED7533 /* BottomBar-SwiftUI in Frameworks */,
-				313194B925C0D01200ED7533 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +125,13 @@
 			children = (
 				3131946825C062E000ED7533 /* Road_HazardsApp.swift */,
 				3131946A25C062E000ED7533 /* ContentView.swift */,
+				31749E162604A6FC00C3ADF9 /* TabNavigationView.swift */,
+				31749E112604A68C00C3ADF9 /* HomeView.swift */,
+				31749E1B2604A7EF00C3ADF9 /* Auth */,
+				319713FF25EED99B006F82FE /* Report */,
 				315CA83C25E43E2200533A86 /* Managers */,
 				31C5E68925E447EF0095D966 /* Header */,
+				31EE2540260A853800C2EB0B /* Profile */,
 				31751A5225D2EA870030DB0F /* Hazards */,
 				31751A4D25D2E5470030DB0F /* Extensions.swift */,
 				315CA84825E43EBD00533A86 /* MapView.swift */,
@@ -163,6 +176,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		31749E1B2604A7EF00C3ADF9 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				31749E1C2604A80E00C3ADF9 /* LoginView.swift */,
+				31749E212604CF7B00C3ADF9 /* UserAuth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		31751A5225D2EA870030DB0F /* Hazards */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +195,14 @@
 			path = Hazards;
 			sourceTree = "<group>";
 		};
+		319713FF25EED99B006F82FE /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				3197140025EED9B6006F82FE /* ReportView.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		31C5E68925E447EF0095D966 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +210,14 @@
 				313194B225C0C5E100ED7533 /* HeaderCard.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		31EE2540260A853800C2EB0B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				31EE2541260A855400C2EB0B /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +237,6 @@
 			);
 			name = "Road Hazards";
 			packageProductDependencies = (
-				3131949725C062F600ED7533 /* BottomBar-SwiftUI */,
-				313194B825C0D01200ED7533 /* SwiftUICharts */,
 			);
 			productName = "Road Hazards";
 			productReference = 3131946525C062E000ED7533 /* Road Hazards.app */;
@@ -274,8 +310,6 @@
 			);
 			mainGroup = 3131945C25C062E000ED7533;
 			packageReferences = (
-				3131949625C062F600ED7533 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
-				313194B725C0D01200ED7533 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 3131946625C062E000ED7533 /* Products */;
 			projectDirPath = "";
@@ -319,14 +353,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31749E222604CF7B00C3ADF9 /* UserAuth.swift in Sources */,
 				313194B325C0C5E100ED7533 /* HeaderCard.swift in Sources */,
 				3131946B25C062E000ED7533 /* ContentView.swift in Sources */,
 				315AD4BC25DFF52D004064D7 /* FilterMenuView.swift in Sources */,
+				3197140125EED9B6006F82FE /* ReportView.swift in Sources */,
 				313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */,
 				3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */,
 				31751A3E25D2C7440030DB0F /* Hazard.swift in Sources */,
+				31EE2542260A855400C2EB0B /* ProfileView.swift in Sources */,
+				31749E172604A6FC00C3ADF9 /* TabNavigationView.swift in Sources */,
+				31749E1D2604A80E00C3ADF9 /* LoginView.swift in Sources */,
 				31751A4E25D2E5470030DB0F /* Extensions.swift in Sources */,
 				315CA84925E43EBD00533A86 /* MapView.swift in Sources */,
+				31749E122604A68C00C3ADF9 /* HomeView.swift in Sources */,
 				315CA83E25E43E3400533A86 /* LocationManager.swift in Sources */,
 				31751A5725D2EAF00030DB0F /* Votes.swift in Sources */,
 			);
@@ -644,38 +684,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3131949625C062F600ED7533 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		313194B725C0D01200ED7533 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3131949725C062F600ED7533 /* BottomBar-SwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3131949625C062F600ED7533 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
-			productName = "BottomBar-SwiftUI";
-		};
-		313194B825C0D01200ED7533 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 313194B725C0D01200ED7533 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3131945D25C062E000ED7533 /* Project object */;
 }
