@@ -23,7 +23,6 @@ struct HazardCard: View {
             .zIndex(show ? 1 : 0)
         }
         .frame(width: screen.width)
-
     }
 }
 
@@ -55,10 +54,10 @@ struct HazardCardView: View {
                 
                 HStack (alignment: .top){
                     Button(action: {
-                        // Up vote
+                        HazardApi().voteHazard(hazardId: hazard.hazardId!, vote: "down")
                     }, label: {
                         VStack {
-                            Text("\((hazard.hazardRating?.up ?? 0))")
+                            Text("\((hazard.hazardRating?.down ?? 0))")
                                 .font(.title3)
                                 .bold()
                                 .foregroundColor(.gray)
@@ -77,10 +76,10 @@ struct HazardCardView: View {
                     })
                     Spacer()
                     Button(action: {
-                        // Up vote
+                        HazardApi().voteHazard(hazardId: hazard.hazardId!, vote: "up")
                     }, label: {
                         VStack {
-                            Text("\((hazard.hazardRating?.down) ?? 0)")
+                            Text("\((hazard.hazardRating?.up) ?? 0)")
                                 .font(.title3)
                                 .bold()
                                 .foregroundColor(.gray)
@@ -94,7 +93,6 @@ struct HazardCardView: View {
                                     .scaledToFill()
                                     .frame(width: 30, height: 30)
                                     .foregroundColor(.white)
-                                
                             }
                         }
                     })
@@ -121,11 +119,10 @@ struct HazardCardView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color("IconBackground"))
                                 .frame(width: 64, height: 64)
-                            Image(systemName: hazard.hazardType == "Traffic" ? "car.2" : "drop")
+                            Image(systemName: getHazardImage(hazardType: hazard.hazardType!))
                                 .resizable()
                                 .scaledToFit()
-                                .cornerRadius(10)
-                                .frame(maxWidth: 48, maxHeight: 38)
+                                .frame(maxWidth: 38, maxHeight: 38)
                                 .foregroundColor(.white)
                         }
 
@@ -138,7 +135,7 @@ struct HazardCardView: View {
                             Spacer()
                                 .frame(height: 10.0)
                             HStack(alignment: .bottom) {
-                                Text("\(hazard.distance)km away")
+                                Text("\(hazard.distance ?? 0)km away")
                                     .foregroundColor(.white)
                                     .font(.subheadline)
                                     .padding(.horizontal)
@@ -147,7 +144,7 @@ struct HazardCardView: View {
                                     .cornerRadius(5.0)
                                 
                                 Spacer()
-                                Text(timeSinceHazard(creationTime: String(hazard.creationTime.dropLast(10))))
+                                Text(timeSinceHazard(creationTime: String(hazard.creationTime?.dropLast(10) ?? "Just now")))
                                     .foregroundColor(.white)
                                     .font(.footnote)
                             }
@@ -172,6 +169,23 @@ struct HazardCardView: View {
         .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5))
         .ignoresSafeArea(.all)
 
+    }
+}
+
+func getHazardImage(hazardType: String) -> String {
+    switch hazardType {
+    case "Traffic":
+        return "car.2"
+    case "Flooding":
+        return "drop"
+    case "Hazard":
+        return "exclamationmark.triangle"
+    case "Speed":
+        return "video"
+    case "Animal":
+        return "hare"
+    default:
+        return "ellipsis"
     }
 }
 

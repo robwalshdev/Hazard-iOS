@@ -74,7 +74,6 @@ struct MainHazardCardDetails: View {
                         .foregroundColor(.white)
                         .background(Color.red)
                         .clipShape(Circle())
-
                 }
                 .padding()
                 
