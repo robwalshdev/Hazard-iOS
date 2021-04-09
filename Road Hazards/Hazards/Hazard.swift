@@ -17,7 +17,7 @@ struct Hazard: Codable {
     var distance: Int?
     
     static var example: Hazard {
-        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", hazardRating: HazardRating(up: 10, down: 2), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), creationTime: "2021-02-09T14:55:09.213+00:00", distance: 5)
+        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", hazardRating: HazardRating(up: 10, down: 2), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), creationTime: "2021-04-08T14:55:09.213+00:00", distance: 10)
     }
 }
 
@@ -33,7 +33,7 @@ struct HazardLocation: Codable {
 
 
 class HazardApi {
-    let url: String = "http://road-hazard-alert-system.eu-west-1.elasticbeanstalk.com/hazard"
+    let url: String = "http://192.168.86.51:5000/hazard"
     let token: String = UserDefaults.standard.string(forKey: "token")!
     
     func getHazards(hours: Int, latitude: Double, longitude: Double, radius: Double, completion: @escaping ([Hazard]) -> ()) {

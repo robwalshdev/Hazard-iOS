@@ -95,7 +95,6 @@ struct ReportView: View {
             .shadow(color: Color.gray.opacity(0.4), radius: 10, x: 0, y: 10)
         }
         .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5))
-
         .background(Color.blue)
         .ignoresSafeArea()
     }

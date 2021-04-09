@@ -33,7 +33,7 @@ struct HazardMapView: View {
     
     var body: some View {
         MapView(latitude: lat, longitude: lon, delta: 0.01, showLocation: true, annotationLocations: [AnnotationLocation(longitude: lon, latitude: lat)])
-            .clipShape(RoundedRectangle(cornerRadius:30, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
             .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
             .frame(maxHeight: screen.height / 2)
     }
@@ -108,63 +108,84 @@ struct HazardCardView: View {
             .opacity(show ? 1 : 0)
             
             // Card
+            
             VStack {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(Color.blue)
-                        .shadow(color: Color.blue.opacity(0.2), radius: 20, x: 0, y: 20)
-
-                    HStack {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color("IconBackground"))
-                                .frame(width: 64, height: 64)
+                HStack {
+                    VStack {
+                        HStack(alignment: .center) {
+                            VStack(alignment: .leading) {
+                                Text(hazard.hazardName!)
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .bold()
+                                
+                                Spacer()
+                                    .frame(height: 10.0)
+                                
+                                HStack(alignment: .bottom) {
+                                    Text("\(hazard.distance!) km")
+                                        .foregroundColor(.white)
+                                        .font(.subheadline)
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 2)
+                                        .background(Color("LightBlue"))
+                                        .cornerRadius(5.0)
+                                    
+                                    
+                                    Text(timeSinceHazard(creationTime: String(hazard.creationTime!.dropLast(10))))
+                                        .foregroundColor(.white)
+                                        .font(.subheadline)
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 2)
+                                        .background(Color.secondary)
+                                        .cornerRadius(5.0)
+                                    
+                                    if show {
+                                        Spacer()
+                                    }
+                                }
+                            }
+                            
+                            Spacer()
+                            
                             Image(systemName: getHazardImage(hazardType: hazard.hazardType!))
                                 .resizable()
                                 .scaledToFit()
                                 .frame(maxWidth: 38, maxHeight: 38)
                                 .foregroundColor(.white)
+                                .padding()
+                            
                         }
-
-                        Spacer()
-                        VStack(alignment: .leading) {
-                            Text(hazard.hazardName ?? "Hazard Name")
-                                .foregroundColor(.white)
-                                .font(.title3)
-                                .bold()
-                            Spacer()
-                                .frame(height: 10.0)
-                            HStack(alignment: .bottom) {
-                                Text("\(hazard.distance ?? 0)km away")
-                                    .foregroundColor(.white)
-                                    .font(.subheadline)
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 2)
-                                    .background(Color("LightBlue"))
-                                    .cornerRadius(5.0)
-                                
-                                Spacer()
-                                Text(timeSinceHazard(creationTime: String(hazard.creationTime?.dropLast(10) ?? "Just now")))
-                                    .foregroundColor(.white)
-                                    .font(.footnote)
-                            }
-                        }
-                        .padding(-3.0)
-                        .frame(width: 250.0)
+                        .padding(.top, show ? 30 : 0)
+                        .padding()
+                        .padding(.leading, show ? 20 : 0)
                         
                         Spacer(minLength: show ? 10 : 0)
                     }
-                    .padding(.top, show ? 30 : 0)
-                    .padding()
-                    .padding(.leading, show ? 20 : 0)
+                    .background(Color.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                    .onTapGesture {
+                        self.show.toggle()
+                    }
+                    
+                    if !show {
+                        MapView(latitude: hazard.hazardLocation!.latitude!, longitude: hazard.hazardLocation!.longitude!, delta: 0.02, showLocation: true, annotationLocations: [AnnotationLocation(longitude: hazard.hazardLocation!.longitude!, latitude: hazard.hazardLocation!.latitude!)])
+                            .frame(width: 90, height: 90)
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    }
                 }
-                .frame(maxWidth: show ? .infinity : screen.width - 40, maxHeight: show ? 140 : 120)
-                .onTapGesture {
-                    self.show.toggle()
-                }
-                Votes(upVotes: hazard.hazardRating?.up ?? 10, downVotes: hazard.hazardRating?.down ?? 0)
+                .frame(width: show ? .infinity : screen.width / 1.1, height: show ? 140 : 80)
+
+                
+                Spacer()
+                    .frame(height: 15)
+                
+                Votes(upVotes: hazard.hazardRating!.up!, downVotes: hazard.hazardRating!.down!)
                     .opacity(show ? 0 : 1)
+                    .frame(width: screen.width / 2)
             }
+            
+            
         }
         .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5))
         .ignoresSafeArea(.all)

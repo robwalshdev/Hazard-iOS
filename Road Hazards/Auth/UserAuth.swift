@@ -18,7 +18,7 @@ struct AuthToken: Codable {
 }
 
 class UserAuth {
-    let url: String = "http://road-hazard-alert-system.eu-west-1.elasticbeanstalk.com/auth"
+    let url: String = "http://192.168.86.51:5000/auth"
 
     func authenticateUser(username: String, password: String) {
         let userModel = User(username: username, password: password)
@@ -87,6 +87,7 @@ class UserAuth {
         // TODO: Check if token is stil valid (Expiry date)
         // If token invalid -> login screen
         if UserDefaults.standard.string(forKey: "token") != nil {
+            UserDefaults.standard.set("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2JlcnQiLCJleHAiOjE2MTk3NjY4MjcsImlhdCI6MTYxNzk2NjgyN30.xmgPpHn2tlymcAJ-5NDfWhUnkvMwZ6jBfcMBofDf8aUWAsmK1z2T9vea236CHueQLaFG1va3HhtwpbT7cRu-dw", forKey: "token")
             return true
         }
         return false

@@ -15,14 +15,8 @@ struct TabNavigationView: View {
     
     let tabBarImageNames = ["car.2", "paperplane.fill", "heart"]
     
-    @ObservedObject var locationManager = LocationManager()
-
-    var userLocation: CLLocationCoordinate2D {
-        return(locationManager.location != nil ? locationManager.location!.coordinate : CLLocationCoordinate2D())
-    }
-    
-    var placemark: String { return("\(locationManager.placemark?.administrativeArea?.description ?? "")")
-    }
+    let userLocation: CLLocationCoordinate2D
+    let placemark: String
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -78,7 +72,6 @@ struct TabNavigationView: View {
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
             .padding(.horizontal, 20)
-            .shadow(color: Color.gray, radius: 100, x: 5, y: 10)
         }
         .statusBar(hidden: true)
     }
@@ -86,6 +79,6 @@ struct TabNavigationView: View {
 
 struct TabNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        TabNavigationView()
+        TabNavigationView(userLocation: CLLocationCoordinate2D(), placemark: "Galway")
     }
 }
