@@ -12,11 +12,12 @@ struct HazardCard: View {
     let hazard: Hazard
     
     @State var show = false
+    @Binding var showTabBar: Bool
     
     var body: some View {
         VStack {
             GeometryReader { geometry in
-                HazardCardView(hazard: hazard, show: self.$show)
+                HazardCardView(hazard: hazard, show: self.$show, showTabBar: $showTabBar)
                     .offset(y: self.show ? -geometry.frame(in: .global).minY : 0)
             }.frame(height: show ? screen.height : 120)
             .frame(maxWidth: show ? .infinity : screen.width - 40)
@@ -43,6 +44,7 @@ struct HazardCardView: View {
     let hazard: Hazard
     
     @Binding var show: Bool
+    @Binding var showTabBar: Bool
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -51,6 +53,10 @@ struct HazardCardView: View {
                 if show {
                     HazardMapView(lat: hazard.hazardLocation!.latitude!, lon: hazard.hazardLocation!.longitude!)
                 }
+                
+                Text(hazard.description ?? "")
+                    .font(.subheadline)
+                    .foregroundColor(Color.black.opacity(0.8))
                 
                 HStack (alignment: .top){
                     Button(action: {
@@ -131,14 +137,23 @@ struct HazardCardView: View {
                                         .background(Color("LightBlue"))
                                         .cornerRadius(5.0)
                                     
-                                    
-                                    Text(timeSinceHazard(creationTime: String(hazard.creationTime!.dropLast(10))))
-                                        .foregroundColor(.white)
-                                        .font(.subheadline)
-                                        .padding(.horizontal)
-                                        .padding(.vertical, 2)
-                                        .background(Color.secondary)
-                                        .cornerRadius(5.0)
+                                    if (hazard.source == "AA") {
+                                        Text(timeSinceHazard(creationTime: String(hazard.endDate!.dropLast(10))).dropFirst())
+                                            .foregroundColor(.blue)
+                                            .font(.subheadline)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 2)
+                                            .background(Color.white)
+                                            .cornerRadius(5.0)
+                                    } else {
+                                        Text(timeSinceHazard(creationTime: String(hazard.creationTime!.dropLast(10))))
+                                            .foregroundColor(.white)
+                                            .font(.subheadline)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 2)
+                                            .background(Color.secondary)
+                                            .cornerRadius(5.0)
+                                    }
                                     
                                     if show {
                                         Spacer()
@@ -166,6 +181,7 @@ struct HazardCardView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                     .onTapGesture {
                         self.show.toggle()
+                        self.showTabBar.toggle()
                     }
                     
                     if !show {
@@ -220,6 +236,6 @@ func timeSinceHazard (creationTime: String) -> String{
 
 struct HazardCard_Previews: PreviewProvider {
     static var previews: some View {
-        HazardCard(hazard: Hazard.example)
+        HazardCard(hazard: Hazard.example, showTabBar: .constant(true))
     }
 }

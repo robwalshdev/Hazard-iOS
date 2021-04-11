@@ -11,13 +11,16 @@ struct Hazard: Codable {
     var hazardId:String?
     var hazardName:String?
     var hazardType:String?
+    var description:String?
     var hazardRating:HazardRating?
     var hazardLocation:HazardLocation?
+    var source:String?
     var creationTime:String?
+    var endDate:String?
     var distance: Int?
     
     static var example: Hazard {
-        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", hazardRating: HazardRating(up: 10, down: 2), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), creationTime: "2021-04-08T14:55:09.213+00:00", distance: 10)
+        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", description: "Hazard description", hazardRating: HazardRating(up: 10, down: 2), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), source: "AA", creationTime: "2021-04-08T14:55:09.213+00:00", endDate: "2021-05-08T14:55:09.213+00:00", distance: 10)
     }
 }
 
@@ -46,7 +49,6 @@ class HazardApi {
         URLSession.shared.dataTask(with: request) { (data, _, _) in
 
             let hazards = try! JSONDecoder().decode([Hazard].self, from: data!)
-            print(hazards)
             DispatchQueue.main.async {
                 completion(hazards)
             }

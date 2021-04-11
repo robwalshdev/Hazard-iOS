@@ -10,6 +10,7 @@ import MapKit
 
 struct TabNavigationView: View {
     
+    @State private var showTabBar: Bool = true
     @State private var selectedIndex: Int = 0
     @State var showModal = false
     
@@ -27,7 +28,7 @@ struct TabNavigationView: View {
                 
                 switch selectedIndex {
                 case 0:
-                    HomeView(userLocation: userLocation, placemark: placemark)
+                    HomeView(userLocation: userLocation, placemark: placemark, showTabBar: $showTabBar)
                 default:
                     NavigationView {
                         ProfileView()
@@ -41,37 +42,40 @@ struct TabNavigationView: View {
                 .blur(radius: 150)
                 .ignoresSafeArea(.all)
             
-            HStack {
-                ForEach(0..<3) { num in
-                    Button(action: {
-                        if num == 1 {
-                            showModal.toggle()
-                            return
-                        }
-                        
-                        selectedIndex = num
-                    }, label: {
-                        Spacer()
-                            .frame(width: 30)
-                        
-                        if num == 1 {
-                            Image(systemName: tabBarImageNames[num])
-                                .foregroundColor(.blue)
-                                .font(.system(size: 40, weight: .bold))
-                        } else {
-                            Image(systemName: selectedIndex == num ? "\(tabBarImageNames[num]).fill" : tabBarImageNames[num])
-                                .foregroundColor(selectedIndex == num ? .black : Color.black.opacity(0.1))
-                                .font(.system(size: 22, weight: .bold))
-                        }
-                        Spacer()
-                            .frame(width: 30)
-                    })
-                    .padding(.vertical, 10)
+            if showTabBar {
+                HStack {
+                    ForEach(0..<3) { num in
+                        Button(action: {
+                            if num == 1 {
+                                showModal.toggle()
+                                return
+                            }
+                            
+                            selectedIndex = num
+                        }, label: {
+                            Spacer()
+                                .frame(width: 30)
+                            
+                            if num == 1 {
+                                Image(systemName: tabBarImageNames[num])
+                                    .foregroundColor(.blue)
+                                    .font(.system(size: 40, weight: .bold))
+                            } else {
+                                Image(systemName: selectedIndex == num ? "\(tabBarImageNames[num]).fill" : tabBarImageNames[num])
+                                    .foregroundColor(selectedIndex == num ? .black : Color.black.opacity(0.1))
+                                    .font(.system(size: 22, weight: .bold))
+                            }
+                            Spacer()
+                                .frame(width: 30)
+                        })
+                        .padding(.vertical, 10)
+                    }
                 }
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .padding(.horizontal, 20)
             }
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .padding(.horizontal, 20)
+            
         }
         .statusBar(hidden: true)
     }

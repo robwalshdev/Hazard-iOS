@@ -12,7 +12,7 @@ struct Votes: View {
     let downVotes: Int
     
     var body: some View {
-        ProgressView(value: Double(upVotes), total:Double(upVotes + downVotes))
+        ProgressView(value: Double(upVotes + 1), total:Double(upVotes + downVotes))
             .progressViewStyle(LinearProgressViewStyle(tint: .green))
             .background(Color.red)
             .frame(maxWidth: screen.width - 120, maxHeight: 5, alignment: .center)

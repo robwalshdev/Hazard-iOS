@@ -20,7 +20,9 @@ struct HomeView: View {
     @State private var filterHazards: Bool = false
     
     @State private var showSmartHazardsView: Bool = false
-        
+    
+    @Binding var showTabBar: Bool
+    
     var body: some View {        
         ZStack {
             Spacer().fullScreenCover(isPresented: $showSmartHazardsView, content: {
@@ -122,7 +124,7 @@ struct HomeView: View {
                     
                     VStack(alignment: .center) {
                         ForEach(hazards, id:\.hazardId) { hazard in
-                            HazardCard(hazard: hazard)
+                            HazardCard(hazard: hazard, showTabBar: $showTabBar)
                         }
                         
                         Text("No more hazards... filter to view more!")
@@ -153,6 +155,6 @@ struct HomeView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(userLocation: CLLocationCoordinate2D(), placemark: "Galway")
+        HomeView(userLocation: CLLocationCoordinate2D(), placemark: "Galway", showTabBar: .constant(true))
     }
 }
