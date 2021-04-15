@@ -30,10 +30,11 @@ struct TabNavigationView: View {
                 case 0:
                     HomeView(userLocation: userLocation, placemark: placemark, showTabBar: $showTabBar)
                 default:
-                    NavigationView {
-                        ProfileView()
-                    }
+                    ProfileView(placemark: placemark)
                 }
+            }
+            .onAppear {
+                HazardApi().setQueryDefaults(time: 4, distance: 20, lat: userLocation.latitude, lon: userLocation.longitude)
             }
             
             Rectangle()
@@ -73,6 +74,7 @@ struct TabNavigationView: View {
                 }
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .shadow(color: Color.gray.opacity(0.1), radius: 10, x: 5, y: 10)
                 .padding(.horizontal, 20)
             }
             

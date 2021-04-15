@@ -20,12 +20,12 @@ struct ReportView: View {
     
     @Binding var showView: Bool
     
-    let hazardTypes = ["Traffic", "Flooding", "Hazard", "Speed", "Animal", "Other"]
+    let hazardTypes = ["Traffic", "Flooding", "Hazard", "Speed", "Road works", "Other"]
         
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                Text("Report Hazard")
+                Text("Report")
                     .font(.largeTitle)
                     .bold()
                     .foregroundColor(.white)
@@ -204,7 +204,7 @@ struct HazardSelectionView: View {
                                     .stroke(Color.white, lineWidth: 4)
                                 : nil
                             )
-                        Image(systemName: "hare")
+                        Image(systemName: "hammer")
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: 44, maxHeight: 44)

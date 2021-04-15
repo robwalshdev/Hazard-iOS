@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311A1AA02624804E00061D54 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 311A1A9F2624804E00061D54 /* JWTDecode */; };
 		312D0FF82620B7710034D6E5 /* SmartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D0FF72620B7710034D6E5 /* SmartView.swift */; };
 		3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131946825C062E000ED7533 /* Road_HazardsApp.swift */; };
 		3131946B25C062E000ED7533 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131946A25C062E000ED7533 /* ContentView.swift */; };
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311A1AA02624804E00061D54 /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +152,6 @@
 				31749E1B2604A7EF00C3ADF9 /* Auth */,
 				319713FF25EED99B006F82FE /* Report */,
 				315CA83C25E43E2200533A86 /* Managers */,
-				31C5E68925E447EF0095D966 /* Header */,
 				31EE2540260A853800C2EB0B /* Profile */,
 				31751A5225D2EA870030DB0F /* Hazards */,
 				31751A4D25D2E5470030DB0F /* Extensions.swift */,
@@ -208,9 +209,9 @@
 		31751A5225D2EA870030DB0F /* Hazards */ = {
 			isa = PBXGroup;
 			children = (
-				3168D24B261F534200F254FB /* MiniHazardCardView.swift */,
 				31751A5625D2EAF00030DB0F /* Votes.swift */,
 				313194AD25C06B1900ED7533 /* HazardCardView.swift */,
+				3168D24B261F534200F254FB /* MiniHazardCardView.swift */,
 				31751A3D25D2C7440030DB0F /* Hazard.swift */,
 			);
 			path = Hazards;
@@ -222,13 +223,6 @@
 				3197140025EED9B6006F82FE /* ReportView.swift */,
 			);
 			path = Report;
-			sourceTree = "<group>";
-		};
-		31C5E68925E447EF0095D966 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		31EE2540260A853800C2EB0B /* Profile */ = {
@@ -256,6 +250,7 @@
 			);
 			name = "Road Hazards";
 			packageProductDependencies = (
+				311A1A9F2624804E00061D54 /* JWTDecode */,
 			);
 			productName = "Road Hazards";
 			productReference = 3131946525C062E000ED7533 /* Road Hazards.app */;
@@ -329,6 +324,7 @@
 			);
 			mainGroup = 3131945C25C062E000ED7533;
 			packageReferences = (
+				311A1A9E2624804E00061D54 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
 			);
 			productRefGroup = 3131946625C062E000ED7533 /* Products */;
 			projectDirPath = "";
@@ -704,6 +700,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		311A1A9E2624804E00061D54 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		311A1A9F2624804E00061D54 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 311A1A9E2624804E00061D54 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3131945D25C062E000ED7533 /* Project object */;
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import JWTDecode
 
 struct User: Codable {
     var name: String?
@@ -18,7 +19,7 @@ struct AuthToken: Codable {
 }
 
 class UserAuth {
-    let url: String = "http://192.168.86.51:5000/auth"
+    let url: String = "http://road-hazard.eu-west-1.elasticbeanstalk.com/auth"
 
     func authenticateUser(username: String, password: String) {
         let userModel = User(username: username, password: password)
@@ -95,6 +96,15 @@ class UserAuth {
     
     func logout() {
         UserDefaults.standard.removeObject(forKey: "token")
+    }
+    
+    func getUsernameFromToken() -> String {
+        guard let jwt = try? decode(jwt: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2JlcnQiLCJleHAiOjE2MTk3NjY4MjcsImlhdCI6MTYxNzk2NjgyN30.xmgPpHn2tlymcAJ-5NDfWhUnkvMwZ6jBfcMBofDf8aUWAsmK1z2T9vea236CHueQLaFG1va3HhtwpbT7cRu-dw") else {
+            print("Error decoding token")
+            return "error"
+        }
+        
+        return jwt.subject ?? "Error"
     }
 }
 

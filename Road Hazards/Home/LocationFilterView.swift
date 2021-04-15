@@ -6,17 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct LocationFilterView: View {
     
     let hazardCount: Int
-    
-    @Binding var distance: Double
-    @Binding var timeFrom: Int
+    let userLocation: CLLocationCoordinate2D
     
     @Binding var showFilter: Bool
+    @Binding var hazards: [Hazard]
     
-    @State private var timeSelector = 4
+    @State private var timeSelector = UserDefaults.standard.integer(forKey: "time")
+    @State private var distance = UserDefaults.standard.double(forKey: "distance")
     
     var body: some View {
         VStack {
@@ -51,11 +52,11 @@ struct LocationFilterView: View {
                         Text("4 hrs").tag(4)
                         Text("8 hrs").tag(8)
                         Text("24 hrs").tag(24)
-
                     })
                     .pickerStyle(SegmentedPickerStyle())
                     .onChange(of: timeSelector, perform: { value in
-                        timeFrom = timeSelector
+                        HazardApi().setQueryDefaults(time: timeSelector, distance: distance, lat: userLocation.latitude, lon: userLocation.longitude)
+                        getHazards()
                     })
                     .padding()
                     
@@ -64,6 +65,10 @@ struct LocationFilterView: View {
                     Slider(value: $distance, in: 5...100, step: 5)
                         .accentColor(.white)
                         .padding()
+                        .onChange(of: distance, perform: { value in
+                            HazardApi().setQueryDefaults(time: timeSelector, distance: distance, lat: userLocation.latitude, lon: userLocation.longitude)
+                            getHazards()
+                        })
                         
                 }
             } else {
@@ -97,10 +102,16 @@ struct LocationFilterView: View {
         .shadow(color: Color.gray.opacity(0.2), radius: 20, x: 0, y: 20)
         .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5))
     }
+    
+    func getHazards() {
+        HazardApi().getHazards(completion: { (hazards) in
+            self.hazards = hazards
+        })
+    }
 }
 
 struct LocationFilterView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationFilterView(hazardCount: 5, distance: .constant(20.0), timeFrom: .constant(4), showFilter: .constant(true))
+        LocationFilterView(hazardCount: 5, userLocation: CLLocationCoordinate2D(), showFilter: .constant(true), hazards: .constant([Hazard.example]))
     }
 }

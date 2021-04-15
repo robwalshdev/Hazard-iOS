@@ -13,11 +13,14 @@ struct HazardCard: View {
     
     @State var show = false
     @Binding var showTabBar: Bool
+    @Binding var hazards: [Hazard]
+    
+    let isUserHazard: Bool
     
     var body: some View {
         VStack {
             GeometryReader { geometry in
-                HazardCardView(hazard: hazard, show: self.$show, showTabBar: $showTabBar)
+                HazardCardView(hazard: hazard, isUserHazard: isUserHazard, show: self.$show, showTabBar: $showTabBar, hazards: $hazards)
                     .offset(y: self.show ? -geometry.frame(in: .global).minY : 0)
             }.frame(height: show ? screen.height : 120)
             .frame(maxWidth: show ? .infinity : screen.width - 40)
@@ -42,9 +45,11 @@ struct HazardMapView: View {
 
 struct HazardCardView: View {
     let hazard: Hazard
+    let isUserHazard: Bool
     
     @Binding var show: Bool
     @Binding var showTabBar: Bool
+    @Binding var hazards: [Hazard]
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -61,6 +66,7 @@ struct HazardCardView: View {
                 HStack (alignment: .top){
                     Button(action: {
                         HazardApi().voteHazard(hazardId: hazard.hazardId!, vote: "down")
+                        updateHazards()
                     }, label: {
                         VStack {
                             Text("\((hazard.hazardRating?.down ?? 0))")
@@ -83,6 +89,7 @@ struct HazardCardView: View {
                     Spacer()
                     Button(action: {
                         HazardApi().voteHazard(hazardId: hazard.hazardId!, vote: "up")
+                        updateHazards()
                     }, label: {
                         VStack {
                             Text("\((hazard.hazardRating?.up) ?? 0)")
@@ -129,13 +136,16 @@ struct HazardCardView: View {
                                     .frame(height: 10.0)
                                 
                                 HStack(alignment: .bottom) {
-                                    Text("\(hazard.distance!) km")
-                                        .foregroundColor(.white)
-                                        .font(.subheadline)
-                                        .padding(.horizontal)
-                                        .padding(.vertical, 2)
-                                        .background(Color("LightBlue"))
-                                        .cornerRadius(5.0)
+                                    if (hazard.distance != nil) {
+                                        Text("\(hazard.distance!) km")
+                                            .foregroundColor(.white)
+                                            .font(.subheadline)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 2)
+                                            .background(Color("LightBlue"))
+                                            .cornerRadius(5.0)
+                                    }
+                                    
                                     
                                     if (hazard.source == "AA") {
                                         Text(timeSinceHazard(creationTime: String(hazard.endDate!.dropLast(10))).dropFirst())
@@ -190,9 +200,8 @@ struct HazardCardView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     }
                 }
-                .frame(width: show ? .infinity : screen.width / 1.1, height: show ? 140 : 80)
+                .frame(width: show ? screen.width : screen.width / 1.1, height: show ? 140 : 80)
 
-                
                 Spacer()
                     .frame(height: 15)
                 
@@ -200,12 +209,24 @@ struct HazardCardView: View {
                     .opacity(show ? 0 : 1)
                     .frame(width: screen.width / 2)
             }
-            
-            
         }
-        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5))
+        .animation(.spring(response: 0.4, dampingFraction: 0.9, blendDuration: 0.4))
         .ignoresSafeArea(.all)
-
+    }
+    
+    func updateHazards() {
+        let hazardApi = HazardApi()
+        
+        if isUserHazard {
+            hazardApi.getHazardsByUser(completion: { (hazards) in
+                self.hazards = hazards
+            })
+            return
+        }
+        
+        hazardApi.getHazards(completion: { (hazards) in
+            self.hazards = hazards
+        })
     }
 }
 
@@ -213,14 +234,16 @@ func getHazardImage(hazardType: String) -> String {
     switch hazardType {
     case "Traffic":
         return "car.2"
+    case "Incident":
+        return "car.2"
     case "Flooding":
         return "drop"
     case "Hazard":
         return "exclamationmark.triangle"
     case "Speed":
         return "video"
-    case "Animal":
-        return "hare"
+    case "Road works":
+        return "hammer"
     default:
         return "ellipsis"
     }
@@ -236,6 +259,6 @@ func timeSinceHazard (creationTime: String) -> String{
 
 struct HazardCard_Previews: PreviewProvider {
     static var previews: some View {
-        HazardCard(hazard: Hazard.example, showTabBar: .constant(true))
+        HazardCard(hazard: Hazard.example, showTabBar: .constant(true), hazards: .constant([Hazard.example]), isUserHazard: false)
     }
 }

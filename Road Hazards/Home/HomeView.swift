@@ -16,7 +16,7 @@ struct HomeView: View {
     let placemark: String
     
     @State private var distance: Double = 10.0
-    @State private var timeFrom: Int = 24
+    @State private var timeFrom: Int = 4
     @State private var filterHazards: Bool = false
     
     @State private var showSmartHazardsView: Bool = false
@@ -34,7 +34,7 @@ struct HomeView: View {
                     
                     // App Title - Welcome / Location?
                     
-                    Text("Hazards \(placemark)")
+                    Text("Hazards")
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.gray)
@@ -46,8 +46,21 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(hazards, id:\.hazardId) { hazard in
-                                MiniHazardCardView(hazard: hazard).padding(.trailing).padding(.bottom, 15)
+                                MiniHazardCardView(hazard: hazard)
+                                    .padding(.trailing)
+                                    .padding(.bottom, 15)
                             }
+                            
+                            // Placeholder
+                            
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .foregroundColor(Color.gray.opacity(0.05))
+                                .frame(width: screen.width/2, height: 80, alignment: .center)
+                                .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
+                                .padding(.trailing)
+                                .padding(.bottom, 15)
+
+                            
                         }.padding(.leading)
                     }
                     
@@ -62,13 +75,7 @@ struct HomeView: View {
                     // Location + Filter Card
                     
                     HStack {
-                        LocationFilterView(hazardCount: hazards.count, distance: $distance, timeFrom: $timeFrom, showFilter: $filterHazards)
-                            .onChange(of: distance, perform: { value in
-                                getHazards()
-                            })
-                            .onChange(of: timeFrom, perform: { value in
-                                getHazards()
-                            })
+                        LocationFilterView(hazardCount: hazards.count, userLocation: userLocation, showFilter: $filterHazards, hazards: $hazards)
                         
                         Spacer()
                         
@@ -100,7 +107,7 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        Text("\(Int(distance)) km")
+                        Text("\(Int(UserDefaults.standard.double(forKey: "distance"))) km")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .padding(.horizontal, 10)
@@ -108,7 +115,7 @@ struct HomeView: View {
                             .background(Color.blue)
                             .clipShape(Capsule())
                             .shadow(color: Color.blue.opacity(0.1), radius: 10, x: 0, y: 10)
-                        Text("\(timeFrom) hrs")
+                        Text("\(UserDefaults.standard.integer(forKey: "time")) hrs")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .padding(.horizontal, 10)
@@ -124,8 +131,14 @@ struct HomeView: View {
                     
                     VStack(alignment: .center) {
                         ForEach(hazards, id:\.hazardId) { hazard in
-                            HazardCard(hazard: hazard, showTabBar: $showTabBar)
+                            HazardCard(hazard: hazard, showTabBar: $showTabBar, hazards: $hazards, isUserHazard: false)
+                                .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
                         }
+                        
+                        RoundedRectangle(cornerRadius: 15, style: .continuous)
+                            .foregroundColor(Color.gray.opacity(0.05))
+                            .frame(width: screen.width / 1.1, height: 80, alignment: .center)
+                            .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
                         
                         Text("No more hazards... filter to view more!")
                             .font(.callout)
@@ -141,15 +154,14 @@ struct HomeView: View {
             }
             .onAppear {
                 getHazards()
-        }
+            }
         }
     }
     
     func getHazards() {
-        HazardApi().getHazards(hours: timeFrom, latitude: userLocation.latitude, longitude: userLocation.longitude, radius: distance.rounded(toPlaces: 1), completion: { (hazards) in
+        HazardApi().getHazards(completion: { (hazards) in
             self.hazards = hazards
         })
-        
     }
 }
 

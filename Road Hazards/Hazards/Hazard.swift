@@ -36,12 +36,32 @@ struct HazardLocation: Codable {
 
 
 class HazardApi {
-    let url: String = "http://192.168.86.51:5000/hazard"
+    let url: String = "http://road-hazard.eu-west-1.elasticbeanstalk.com/hazard"
     let token: String = UserDefaults.standard.string(forKey: "token")!
     
-    func getHazards(hours: Int, latitude: Double, longitude: Double, radius: Double, completion: @escaping ([Hazard]) -> ()) {
+    func getHazards(completion: @escaping ([Hazard]) -> ()) {
+        let hours = UserDefaults.standard.integer(forKey: "time")
+        let latitude = UserDefaults.standard.double(forKey: "lat")
+        let longitude = UserDefaults.standard.double(forKey: "lon")
+        let radius = UserDefaults.standard.double(forKey: "distance")
+        
         let url = URL(string: "\(self.url)/\(hours)?latitude=\(latitude)&longitude=\(longitude)&radius=\(radius)")!
-        print(url)
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, _, _) in
+
+            let hazards = try! JSONDecoder().decode([Hazard].self, from: data!)
+            DispatchQueue.main.async {
+                completion(hazards)
+            }
+        }
+        .resume()
+    }
+    
+    func getHazardsByUser(completion: @escaping ([Hazard]) -> ()) {
+        let url = URL(string: "\(self.url)/?user=\(UserAuth().getUsernameFromToken())")!
 
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -57,7 +77,7 @@ class HazardApi {
     }
     
     func postHazard(hazardName: String, hazardType: String, lat: Double, lon: Double) {
-        let hazardDataModel = Hazard(hazardName: hazardName, hazardType: hazardType, hazardLocation: HazardLocation(longitude: lon, latitude: lat))
+        let hazardDataModel = Hazard(hazardName: hazardName, hazardType: hazardType, hazardLocation: HazardLocation(longitude: lon, latitude: lat), source: UserAuth().getUsernameFromToken())
         
         guard let jsonData = try? JSONEncoder().encode(hazardDataModel) else {
             print("Error: Trying to convert model to JSON data")
@@ -102,5 +122,15 @@ class HazardApi {
                 return
             }
         }.resume()
+    }
+    
+    func setQueryDefaults(time: Int, distance: Double, lat: Double, lon: Double) {
+        UserDefaults.standard.set(time, forKey: "time")
+        
+        UserDefaults.standard.set(distance, forKey: "distance")
+        
+        UserDefaults.standard.set(lat, forKey: "lat")
+        
+        UserDefaults.standard.set(lon, forKey: "lon")
     }
 }

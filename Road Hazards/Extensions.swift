@@ -5,6 +5,7 @@
 //  Created by Robert Walsh on 09/02/2021.
 //
 
+import SwiftUI
 import Foundation
 import MapKit
 import Contacts
@@ -26,3 +27,11 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
 }
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
