@@ -69,11 +69,14 @@ class UserAuth {
         
     }
     
-    func registerUser(name: String, username: String, password: String) {
+    func registerUser(name: String, username: String, password: String, signUpError: @escaping (Bool) -> ()) {
         let userModel = User(name: name, username: username, password: password)
         
         guard let jsonData = try? JSONEncoder().encode(userModel) else {
             print("Error: Trying to convert model to JSON data")
+            DispatchQueue.main.async {
+                signUpError(true)
+            }
             return
         }
         
@@ -88,15 +91,23 @@ class UserAuth {
             
             guard error == nil else {
                 print("Error: error calling POST")
-                print(error!)
+                DispatchQueue.main.async {
+                    signUpError(true)
+                }
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                print("Error: HTTP request failed")
+                DispatchQueue.main.async {
+                    signUpError(true)
+                }
                 return
             }
             
             UserDefaults.standard.set(authToken.token, forKey: "token")
+            
+            DispatchQueue.main.async {
+                signUpError(false)
+            }
         }.resume()
     }
     

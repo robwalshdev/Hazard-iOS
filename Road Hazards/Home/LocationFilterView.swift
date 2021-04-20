@@ -110,6 +110,7 @@ struct LocationFilterView: View {
                 self.isVisible.toggle()
             }
         }
+        
     }
     
     func getHazards() {

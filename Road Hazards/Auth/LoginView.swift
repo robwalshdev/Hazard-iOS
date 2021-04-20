@@ -72,7 +72,7 @@ struct LoginView: View {
                     Divider()
                     
                     HStack(alignment: .center) {
-                        Image(systemName: "key")
+                        Image(systemName: "key.fill")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 20)
@@ -155,6 +155,7 @@ struct RegisterView: View {
     @State private var username = ""
     @State private var password = ""
     
+    @State var showError: Bool = false
     
     var body: some View {
         VStack {
@@ -237,7 +238,9 @@ struct RegisterView: View {
                             .padding(.bottom)
 
                         Button(action: {
-                            UserAuth().registerUser(name: name, username: username, password: password)
+                            UserAuth().registerUser(name: name, username: username, password: password, signUpError: { (error) in
+                                self.showError = error
+                            })
                         }, label: {
                             HStack {
                                 Text("Register")
@@ -253,6 +256,9 @@ struct RegisterView: View {
                             .foregroundColor(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                             .shadow(color: Color.blue.opacity(0.1), radius: 10, x: 5, y: 10)
+                        })
+                        .alert(isPresented: $showError, content: { () -> Alert in
+                            Alert(title: Text("User already exists"), message: Text("Please login or create an account with a different username."), dismissButton: .default(Text("Try again")))
                         })
                         .padding(.top)
                         

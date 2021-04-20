@@ -19,7 +19,7 @@ struct SmartHazard: Codable {
 }
 
 class SmartHazardApi {
-    let url: String = "http://192.168.86.51:5000/smart"
+    let url: String = "http://road-hazard.eu-west-1.elasticbeanstalk.com/smart"
     let token: String = UserDefaults.standard.string(forKey: "token")!
     
     func getSmartHazards(completion: @escaping ([SmartHazard]) -> ()) {

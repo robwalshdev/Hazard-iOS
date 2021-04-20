@@ -44,7 +44,7 @@ struct MiniHazardCardView: View {
         .frame(width: screen.width / 2.2, height: 80, alignment: .center)
         .background(Color.blue)
         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-        .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
+        .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 5)
         .opacity(isVisible ? 1 : 0)
         .scaleEffect(isVisible ? 1 : 0)
         .onAppear {

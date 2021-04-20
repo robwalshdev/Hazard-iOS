@@ -18,7 +18,6 @@ struct ProfileView: View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack {
-                    
                     // Background + Sign out button
                     HStack{
                         Text("Profile")
@@ -99,7 +98,7 @@ struct ProfileView: View {
                         }
                     }
                     .padding()
-                    .frame(width: screen.width * 0.9, height: screen.width / 2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: screen.width * 0.9, height: screen.width / 2, alignment: .center)
                     .background(Color.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                     .shadow(color: Color.gray.opacity(0.1), radius: 10, x: 5, y: 10)
@@ -132,7 +131,6 @@ struct ProfileView: View {
                 
                 Spacer()
             }
-            
             .onAppear {
                 getHazardsByUser()
             }

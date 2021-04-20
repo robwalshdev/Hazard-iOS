@@ -45,12 +45,6 @@ struct TabNavigationView: View {
                 HazardApi().setQueryDefaults(time: 4, distance: 30, lat: userLocation.latitude, lon: userLocation.longitude)
             }
             
-            Rectangle()
-                .frame(width: screen.width, height: 20, alignment: .center)
-                .background(Color.blue.opacity(0.3))
-                .blur(radius: 150)
-                .ignoresSafeArea(.all)
-            
             if showTabBar {
                 HStack {
                     ForEach(0..<3) { num in
