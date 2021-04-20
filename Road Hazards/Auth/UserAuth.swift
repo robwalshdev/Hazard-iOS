@@ -21,11 +21,19 @@ struct AuthToken: Codable {
 class UserAuth {
     let url: String = "http://road-hazard.eu-west-1.elasticbeanstalk.com/auth"
 
-    func authenticateUser(username: String, password: String) {
+    /*
+     Authenticate user with username & password
+     Method error = false -> successful login no need to throw an error
+     Method error = true -> invalid login no need to throw an error
+     */
+    func authenticateUser(username: String, password: String, loginError: @escaping (Bool) -> ()) {
         let userModel = User(username: username, password: password)
         
         guard let jsonData = try? JSONEncoder().encode(userModel) else {
             print("Error: Trying to convert model to JSON data")
+            DispatchQueue.main.async {
+                loginError(true)
+            }
             return
         }
         
@@ -39,18 +47,26 @@ class UserAuth {
             let authToken = try! JSONDecoder().decode(AuthToken.self, from: data!)
             
             guard error == nil else {
-                print("Error: error calling POST")
-                print(error!)
+                DispatchQueue.main.async {
+                    loginError(true)
+                }
                 return
             }
             guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
-                print("Error: HTTP request failed")
+                DispatchQueue.main.async {
+                    loginError(true)
+                }
                 return
             }
             
             UserDefaults.standard.set(authToken.token, forKey: "token")
             
+            DispatchQueue.main.async {
+                loginError(false)
+            }
+            return
         }.resume()
+        
     }
     
     func registerUser(name: String, username: String, password: String) {
@@ -87,9 +103,10 @@ class UserAuth {
     func getAuthToken() -> Bool {
         // TODO: Check if token is stil valid (Expiry date)
         // If token invalid -> login screen
-        if UserDefaults.standard.string(forKey: "token") != nil {
-            UserDefaults.standard.set("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2JlcnQiLCJleHAiOjE2MTk3NjY4MjcsImlhdCI6MTYxNzk2NjgyN30.xmgPpHn2tlymcAJ-5NDfWhUnkvMwZ6jBfcMBofDf8aUWAsmK1z2T9vea236CHueQLaFG1va3HhtwpbT7cRu-dw", forKey: "token")
-            return true
+        let token = getTokenFromDefaults()
+        if token != "" {
+            let decoded = decodeJWT(token: token)
+            return !decoded.expired
         }
         return false
     }
@@ -99,12 +116,35 @@ class UserAuth {
     }
     
     func getUsernameFromToken() -> String {
-        guard let jwt = try? decode(jwt: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2JlcnQiLCJleHAiOjE2MTk3NjY4MjcsImlhdCI6MTYxNzk2NjgyN30.xmgPpHn2tlymcAJ-5NDfWhUnkvMwZ6jBfcMBofDf8aUWAsmK1z2T9vea236CHueQLaFG1va3HhtwpbT7cRu-dw") else {
-            print("Error decoding token")
-            return "error"
+        let jwt = decodeJWT(token: getTokenFromDefaults())
+        
+        return jwt.subject!
+    }
+    
+    func getExpireFromToken() -> String {
+        let jwt = decodeJWT(token: getTokenFromDefaults())
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        
+        return formatter.string(from: jwt.expiresAt!)
+    }
+    
+    func getDateOfTokenExpiration(jwt: String) -> Date {
+        return Date()
+    }
+    
+    func getTokenFromDefaults() -> String {
+        return UserDefaults.standard.string(forKey: "token") ?? ""
+    }
+    
+    func decodeJWT(token: String) -> JWT {
+        guard let jwt = try? decode(jwt: token) else {
+            return "Error" as! JWT
         }
         
-        return jwt.subject ?? "Error"
+        return jwt
     }
+    
 }
 

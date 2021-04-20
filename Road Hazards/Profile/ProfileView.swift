@@ -60,6 +60,7 @@ struct ProfileView: View {
                             .font(.title)
                             .bold()
                         
+                        // Badges / Rewards / Stats
                         HStack {
                             Text(placemark)
                                 .foregroundColor(.white)
@@ -90,7 +91,7 @@ struct ProfileView: View {
                         Spacer()
                         
                         HStack {
-                            Text("Joined 1 month ago")
+                            Text(UserAuth().getExpireFromToken())
                                 .font(.caption)
                                 .foregroundColor(.gray )
                                 .padding(.vertical)

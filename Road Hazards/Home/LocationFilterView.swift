@@ -19,6 +19,8 @@ struct LocationFilterView: View {
     @State private var timeSelector = UserDefaults.standard.integer(forKey: "time")
     @State private var distance = UserDefaults.standard.double(forKey: "distance")
     
+    @State private var isVisible = false
+    
     var body: some View {
         VStack {
             if showFilter {
@@ -100,7 +102,14 @@ struct LocationFilterView: View {
         .background(Color.blue)
         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         .shadow(color: Color.gray.opacity(0.2), radius: 20, x: 0, y: 20)
-        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5))
+        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.4))
+        .opacity(isVisible ? 1 : 0)
+        .scaleEffect(isVisible ? 1 : 0)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                self.isVisible.toggle()
+            }
+        }
     }
     
     func getHazards() {

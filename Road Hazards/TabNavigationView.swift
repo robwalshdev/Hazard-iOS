@@ -19,22 +19,30 @@ struct TabNavigationView: View {
     let userLocation: CLLocationCoordinate2D
     let placemark: String
     
+    @StateObject var tabModelData = TabNavigationModelView()
+    
     var body: some View {
         ZStack(alignment: .bottom) {
-            ZStack {
-                Spacer().fullScreenCover(isPresented: $showModal, content: {
-                    ReportView(userLocation: userLocation, showView: $showModal)
-                })
-                
-                switch selectedIndex {
-                case 0:
+            GeometryReader {_ in
+                ZStack {
+                    Spacer().fullScreenCover(isPresented: $showModal, content: {
+                        ReportView(userLocation: userLocation, showView: $showModal)
+                    })
+                    
                     HomeView(userLocation: userLocation, placemark: placemark, showTabBar: $showTabBar)
-                default:
+                        .opacity(selectedIndex == 0 ? 1 : 0)
+                    
                     ProfileView(placemark: placemark)
+                        .opacity(selectedIndex == 2 ? 1 : 0)
+                }
+            }.onChange(of: selectedIndex) { (_) in
+                switch(selectedIndex) {
+                case 2: if !tabModelData.isProfileViewLoaded{tabModelData.loadProfileView()}
+                default: ()
                 }
             }
             .onAppear {
-                HazardApi().setQueryDefaults(time: 4, distance: 20, lat: userLocation.latitude, lon: userLocation.longitude)
+                HazardApi().setQueryDefaults(time: 4, distance: 30, lat: userLocation.latitude, lon: userLocation.longitude)
             }
             
             Rectangle()
@@ -61,9 +69,13 @@ struct TabNavigationView: View {
                                 Image(systemName: tabBarImageNames[num])
                                     .foregroundColor(.blue)
                                     .font(.system(size: 40, weight: .bold))
-                            } else {
+                            } else if num == 0 {
                                 Image(systemName: selectedIndex == num ? "\(tabBarImageNames[num]).fill" : tabBarImageNames[num])
                                     .foregroundColor(selectedIndex == num ? .black : Color.black.opacity(0.1))
+                                    .font(.system(size: 22, weight: .bold))
+                            } else if num == 2 {
+                                Image(systemName: selectedIndex == num ? "\(tabBarImageNames[num]).fill" : tabBarImageNames[num])
+                                    .foregroundColor(selectedIndex == num ? .red : Color.black.opacity(0.1))
                                     .font(.system(size: 22, weight: .bold))
                             }
                             Spacer()
@@ -73,7 +85,7 @@ struct TabNavigationView: View {
                     }
                 }
                 .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .cornerRadius(20)
                 .shadow(color: Color.gray.opacity(0.1), radius: 10, x: 5, y: 10)
                 .padding(.horizontal, 20)
             }
@@ -86,5 +98,14 @@ struct TabNavigationView: View {
 struct TabNavigationView_Previews: PreviewProvider {
     static var previews: some View {
         TabNavigationView(userLocation: CLLocationCoordinate2D(), placemark: "Galway")
+    }
+}
+
+
+class TabNavigationModelView: ObservableObject {
+    @Published var isProfileViewLoaded = false;
+    
+    func loadProfileView() {
+        isProfileViewLoaded = true
     }
 }

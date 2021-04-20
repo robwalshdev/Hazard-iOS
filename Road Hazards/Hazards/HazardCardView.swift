@@ -15,6 +15,8 @@ struct HazardCard: View {
     @Binding var showTabBar: Bool
     @Binding var hazards: [Hazard]
     
+    @State private var isVisible = false
+    
     let isUserHazard: Bool
     
     var body: some View {
@@ -27,21 +29,16 @@ struct HazardCard: View {
             .zIndex(show ? 1 : 0)
         }
         .frame(width: screen.width)
+        .opacity(isVisible ? 1 : 0)
+        .scaleEffect(isVisible ? 1 : 0)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                self.isVisible.toggle()
+            }
+        }
     }
 }
 
-
-struct HazardMapView: View {
-    let lat: Double
-    let lon: Double
-    
-    var body: some View {
-        MapView(latitude: lat, longitude: lon, delta: 0.01, showLocation: true, annotationLocations: [AnnotationLocation(longitude: lon, latitude: lat)])
-            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
-            .frame(maxHeight: screen.height / 2)
-    }
-}
 
 struct HazardCardView: View {
     let hazard: Hazard
@@ -56,9 +53,12 @@ struct HazardCardView: View {
             // Detail
             VStack(alignment: .leading, spacing: 30.0) {
                 if show {
-                    HazardMapView(lat: hazard.hazardLocation!.latitude!, lon: hazard.hazardLocation!.longitude!)
+                    MapView(latitude: hazard.hazardLocation!.latitude!, longitude:  hazard.hazardLocation!.longitude!, delta: 0.01, showLocation: true, annotationLocations: [AnnotationLocation(longitude: hazard.hazardLocation!.longitude!, latitude: hazard.hazardLocation!.latitude!)], interactive: true)
+                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                        .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
+                        .frame(maxHeight: screen.height / 2)
                 }
-                
+
                 Text(hazard.description ?? "")
                     .font(.subheadline)
                     .foregroundColor(Color.black.opacity(0.8))
@@ -195,7 +195,7 @@ struct HazardCardView: View {
                     }
                     
                     if !show {
-                        MapView(latitude: hazard.hazardLocation!.latitude!, longitude: hazard.hazardLocation!.longitude!, delta: 0.02, showLocation: true, annotationLocations: [AnnotationLocation(longitude: hazard.hazardLocation!.longitude!, latitude: hazard.hazardLocation!.latitude!)])
+                        MapView(latitude: hazard.hazardLocation!.latitude!, longitude: hazard.hazardLocation!.longitude!, delta: 0.02, showLocation: true, annotationLocations: [AnnotationLocation(longitude: hazard.hazardLocation!.longitude!, latitude: hazard.hazardLocation!.latitude!)], interactive: false)
                             .frame(width: 90, height: 90)
                             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     }

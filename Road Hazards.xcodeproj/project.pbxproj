@@ -16,6 +16,7 @@
 		3131947B25C062E100ED7533 /* Road_HazardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131947A25C062E100ED7533 /* Road_HazardsTests.swift */; };
 		3131948625C062E100ED7533 /* Road_HazardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131948525C062E100ED7533 /* Road_HazardsUITests.swift */; };
 		313194AE25C06B1900ED7533 /* HazardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194AD25C06B1900ED7533 /* HazardCardView.swift */; };
+		31355FE4262DD93000CF1889 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31355FE3262DD93000CF1889 /* OnboardingView.swift */; };
 		315CA83E25E43E3400533A86 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA83D25E43E3400533A86 /* LocationManager.swift */; };
 		315CA84925E43EBD00533A86 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA84825E43EBD00533A86 /* MapView.swift */; };
 		3168D247261F471900F254FB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D246261F471900F254FB /* HomeView.swift */; };
@@ -29,6 +30,7 @@
 		31751A5725D2EAF00030DB0F /* Votes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A5625D2EAF00030DB0F /* Votes.swift */; };
 		3197140125EED9B6006F82FE /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197140025EED9B6006F82FE /* ReportView.swift */; };
 		31EE2542260A855400C2EB0B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EE2541260A855400C2EB0B /* ProfileView.swift */; };
+		31EFB7FF262C7BAB00C1392F /* SmartHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFB7FE262C7BAB00C1392F /* SmartHazard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,7 @@
 		3131948525C062E100ED7533 /* Road_HazardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsUITests.swift; sourceTree = "<group>"; };
 		3131948725C062E100ED7533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		313194AD25C06B1900ED7533 /* HazardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazardCardView.swift; sourceTree = "<group>"; };
+		31355FE3262DD93000CF1889 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		315CA83D25E43E3400533A86 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		315CA84825E43EBD00533A86 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3168D246261F471900F254FB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		31751A5625D2EAF00030DB0F /* Votes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Votes.swift; sourceTree = "<group>"; };
 		3197140025EED9B6006F82FE /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		31EE2541260A855400C2EB0B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		31EFB7FE262C7BAB00C1392F /* SmartHazard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHazard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				312D0FF72620B7710034D6E5 /* SmartView.swift */,
+				31EFB7FE262C7BAB00C1392F /* SmartHazard.swift */,
 			);
 			path = Smart;
 			sourceTree = "<group>";
@@ -147,12 +152,13 @@
 				3131946825C062E000ED7533 /* Road_HazardsApp.swift */,
 				3131946A25C062E000ED7533 /* ContentView.swift */,
 				31749E162604A6FC00C3ADF9 /* TabNavigationView.swift */,
-				312D0FFC2620B7760034D6E5 /* Smart */,
+				31355FE2262DD91600CF1889 /* Onboarding */,
 				312D0FF32620B71D0034D6E5 /* Home */,
 				31749E1B2604A7EF00C3ADF9 /* Auth */,
 				319713FF25EED99B006F82FE /* Report */,
 				315CA83C25E43E2200533A86 /* Managers */,
 				31EE2540260A853800C2EB0B /* Profile */,
+				312D0FFC2620B7760034D6E5 /* Smart */,
 				31751A5225D2EA870030DB0F /* Hazards */,
 				31751A4D25D2E5470030DB0F /* Extensions.swift */,
 				315CA84825E43EBD00533A86 /* MapView.swift */,
@@ -187,6 +193,14 @@
 				3131948725C062E100ED7533 /* Info.plist */,
 			);
 			path = "Road HazardsUITests";
+			sourceTree = "<group>";
+		};
+		31355FE2262DD91600CF1889 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				31355FE3262DD93000CF1889 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		315CA83C25E43E2200533A86 /* Managers */ = {
@@ -373,11 +387,13 @@
 				3168D24C261F534200F254FB /* MiniHazardCardView.swift in Sources */,
 				3197140125EED9B6006F82FE /* ReportView.swift in Sources */,
 				313194AE25C06B1900ED7533 /* HazardCardView.swift in Sources */,
+				31EFB7FF262C7BAB00C1392F /* SmartHazard.swift in Sources */,
 				3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */,
 				3168D251261F5BA100F254FB /* LocationFilterView.swift in Sources */,
 				31751A3E25D2C7440030DB0F /* Hazard.swift in Sources */,
 				31EE2542260A855400C2EB0B /* ProfileView.swift in Sources */,
 				312D0FF82620B7710034D6E5 /* SmartView.swift in Sources */,
+				31355FE4262DD93000CF1889 /* OnboardingView.swift in Sources */,
 				31749E172604A6FC00C3ADF9 /* TabNavigationView.swift in Sources */,
 				31749E1D2604A80E00C3ADF9 /* LoginView.swift in Sources */,
 				3168D247261F471900F254FB /* HomeView.swift in Sources */,

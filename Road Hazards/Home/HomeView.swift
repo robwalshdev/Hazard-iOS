@@ -66,7 +66,7 @@ struct HomeView: View {
                     
                     // Map Card With Annotations
 
-                    MapView(latitude: userLocation.latitude, longitude: userLocation.longitude, delta: 0.2, showLocation: true, annotationLocations: [])
+                    MapView(latitude: userLocation.latitude, longitude: userLocation.longitude, delta: 0.4, showLocation: true, annotationLocations: getAnnotationPoints(), interactive: true)
                         .cornerRadius(10)
                         .frame(height: screen.width * 0.8)
                         .shadow(color: Color.gray.opacity(0.2), radius: 20, x: 0, y: 10)
@@ -135,10 +135,17 @@ struct HomeView: View {
                                 .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
                         }
                         
-                        RoundedRectangle(cornerRadius: 15, style: .continuous)
-                            .foregroundColor(Color.gray.opacity(0.05))
-                            .frame(width: screen.width / 1.1, height: 80, alignment: .center)
-                            .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
+                        // Placeholder Card
+                        HStack {
+                            Spacer()
+                            
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .foregroundColor(Color.gray.opacity(0.05))
+                                .frame(width: screen.width / 1.1, height: 80, alignment: .center)
+                                .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
+                            
+                            Spacer()
+                        }
                         
                         Text("No more hazards... filter to view more!")
                             .font(.callout)
@@ -162,6 +169,21 @@ struct HomeView: View {
         HazardApi().getHazards(completion: { (hazards) in
             self.hazards = hazards
         })
+    }
+    
+    func getAnnotationPoints() -> [AnnotationLocation] {
+        if self.hazards.count == 0 {
+            return []
+        }
+        
+        var toReturn: [AnnotationLocation] = []
+
+        for hazard in self.hazards {
+            let point: AnnotationLocation = AnnotationLocation(longitude: hazard.hazardLocation!.longitude!, latitude: hazard.hazardLocation!.latitude!)
+            toReturn.append(point)
+        }
+        
+        return toReturn
     }
 }
 

@@ -14,6 +14,7 @@ struct MapView: View {
     let delta: Double
     let showLocation: Bool
     let annotationLocations: [AnnotationLocation]
+    let interactive: Bool
     
     @State private var trackingMode = MapUserTrackingMode.none
     
@@ -22,8 +23,8 @@ struct MapView: View {
         
         return ZStack {
             if showLocation {
-                Map(coordinateRegion: userLocation, interactionModes: .zoom, showsUserLocation: true, userTrackingMode: $trackingMode, annotationItems: annotationLocations) { annotation in
-                        MapMarker(coordinate: annotation.coordinate)
+                Map(coordinateRegion: userLocation, interactionModes: interactive ? .all : .zoom, showsUserLocation: true, userTrackingMode: $trackingMode, annotationItems: annotationLocations) { annotation in
+                    MapMarker(coordinate: annotation.coordinate, tint: .red)
                 }
             } else {
                 Map(coordinateRegion: userLocation)
@@ -45,6 +46,6 @@ struct AnnotationLocation: Identifiable {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(latitude: 53.0, longitude: -9.0, delta: 0.02, showLocation: false, annotationLocations: [])
+        MapView(latitude: 53.0, longitude: -9.0, delta: 0.02, showLocation: false, annotationLocations: [], interactive: true)
     }
 }

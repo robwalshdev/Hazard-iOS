@@ -10,6 +10,8 @@ import SwiftUI
 struct MiniHazardCardView: View {
     let hazard: Hazard
     
+    @State private var isVisible = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -43,6 +45,14 @@ struct MiniHazardCardView: View {
         .background(Color.blue)
         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 0, y: 5)
+        .opacity(isVisible ? 1 : 0)
+        .scaleEffect(isVisible ? 1 : 0)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                self.isVisible.toggle()
+            }
+            
+        }
     }
 }
 

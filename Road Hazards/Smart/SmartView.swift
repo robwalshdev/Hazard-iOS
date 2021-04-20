@@ -11,6 +11,10 @@ struct SmartView: View {
     
     @Binding var showView: Bool
     
+    @State var smartHazards: [SmartHazard] = []
+    
+    @Environment(\.openURL) var openURL
+    
     let data = (1...5).map { "Item \($0)" }
     
     let columns = [
@@ -51,29 +55,30 @@ struct SmartView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 15) {
-                    ForEach(0..<5) {_ in
+                    ForEach(smartHazards, id:\.smartId) {smartHazard in
                         VStack(alignment: .leading) {
-                            Text("Heavy traffic in town")
+                            Text(smartHazard.keyPhrase)
                                 .font(.title)
+                                .minimumScaleFactor(0.5)
                                 .foregroundColor(Color.gray.opacity(0.9))
                             Spacer()
                             
                             HStack {
-                                Text("Galway City")
+                                Text(smartHazard.location)
                                     .foregroundColor(.blue)
                                     .font(.footnote)
                                 
                                 Spacer()
                                 
                                 Button(action: {
-                                    // Open tweet
+                                    openURL(URL(string: smartHazard.url)!)
                                 }, label: {
                                     Image(systemName: "link.circle")
                                         .foregroundColor(Color.blue)
                                 })
                             }
                         }
-                        .padding(8)
+                        .padding()
                         .frame(width: screen.width / 2.4, height: screen.width / 2.4)
                         .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
@@ -87,6 +92,15 @@ struct SmartView: View {
         }
         .background(Color.green)
         .ignoresSafeArea()
+        .onAppear {
+            getSmartHazards()
+        }
+    }
+    
+    func getSmartHazards() {
+        SmartHazardApi().getSmartHazards { (smartHazards) in
+            self.smartHazards = smartHazards
+        }
     }
 }
 
