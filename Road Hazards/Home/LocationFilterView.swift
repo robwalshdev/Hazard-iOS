@@ -28,7 +28,7 @@ struct LocationFilterView: View {
                     HStack(alignment: .center) {
                         VStack(alignment: .leading) {
                             Text("Filter")
-                                .font(.title)
+                                .font(.title2)
                                 .foregroundColor(.white)
                                 .bold()
                             Text("Time & Distance")

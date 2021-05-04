@@ -10,6 +10,8 @@ import MapKit
 
 struct TabNavigationView: View {
     
+    @State private var hazards: [Hazard] = []
+
     @State private var showTabBar: Bool = true
     @State private var selectedIndex: Int = 0
     @State var showModal = false
@@ -26,10 +28,10 @@ struct TabNavigationView: View {
             GeometryReader {_ in
                 ZStack {
                     Spacer().fullScreenCover(isPresented: $showModal, content: {
-                        ReportView(userLocation: userLocation, showView: $showModal)
+                        ReportView(userLocation: userLocation, showView: $showModal, hazards: $hazards)
                     })
                     
-                    HomeView(userLocation: userLocation, placemark: placemark, showTabBar: $showTabBar)
+                    HomeView(hazards: $hazards, userLocation: userLocation, placemark: placemark, showTabBar: $showTabBar)
                         .opacity(selectedIndex == 0 ? 1 : 0)
                     
                     ProfileView(placemark: placemark)

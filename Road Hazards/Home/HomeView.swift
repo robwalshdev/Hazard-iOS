@@ -10,7 +10,7 @@ import MapKit
 
 struct HomeView: View {
     
-    @State var hazards: [Hazard] = []
+    @Binding var hazards: [Hazard]
     
     let userLocation: CLLocationCoordinate2D
     let placemark: String
@@ -198,6 +198,6 @@ struct HomeView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(userLocation: CLLocationCoordinate2D(), placemark: "Galway", showTabBar: .constant(true))
+        HomeView(hazards: .constant([Hazard.example]), userLocation: CLLocationCoordinate2D(), placemark: "Galway", showTabBar: .constant(true))
     }
 }

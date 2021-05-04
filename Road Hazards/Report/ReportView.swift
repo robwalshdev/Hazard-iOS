@@ -19,9 +19,21 @@ struct ReportView: View {
     @State private var adjustLocation: Bool = false
     
     @Binding var showView: Bool
+    @Binding var hazards: [Hazard]
     
     let hazardTypes = ["Traffic", "Flooding", "Hazard", "Speed", "Road works", "Other"]
         
+    fileprivate func postHazard() {
+        HazardApi().postHazard(hazardName: hazardTypes[selectedHazardType], hazardType: hazardTypes[selectedHazardType], lat: hazardCoordinates.latitude, lon: hazardCoordinates.longitude)
+        
+        // 0.1 sec delay before updating
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            HazardApi().getHazards(completion: { (hazards) in
+                self.hazards = hazards
+            })
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack(alignment: .center) {
@@ -78,7 +90,7 @@ struct ReportView: View {
             Spacer()
             
             Button(action: {
-                HazardApi().postHazard(hazardName: hazardTypes[selectedHazardType], hazardType: hazardTypes[selectedHazardType], lat: hazardCoordinates.latitude, lon: hazardCoordinates.longitude)
+                postHazard()
                 showView.toggle()
             }, label: {
                 Image(systemName: "paperplane")
@@ -239,12 +251,6 @@ struct HazardSelectionView: View {
     }
 }
 
-struct ReportView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReportView(userLocation: CLLocationCoordinate2D(), showView: .constant(true))
-    }
-}
-
 struct ReportMapView: UIViewRepresentable {
     
     let userLocation: CLLocationCoordinate2D
@@ -292,5 +298,11 @@ struct ReportMapView: UIViewRepresentable {
             
             self.parent.annotatioCoordinatee = view.annotation!.coordinate
         }
+    }
+}
+
+struct ReportView_Previews: PreviewProvider {
+    static var previews: some View {
+        ReportView(userLocation: CLLocationCoordinate2D(), showView: .constant(true), hazards: .constant([Hazard.example]))
     }
 }
