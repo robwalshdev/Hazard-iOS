@@ -19,13 +19,25 @@ struct ReportView: View {
     @State private var adjustLocation: Bool = false
     
     @Binding var showView: Bool
+    @Binding var hazards: [Hazard]
     
-    let hazardTypes = ["Traffic", "Flooding", "Hazard", "Speed", "Animal", "Other"]
+    let hazardTypes = ["Traffic", "Flooding", "Hazard", "Speed", "Road works", "Other"]
         
+    fileprivate func postHazard() {
+        HazardApi().postHazard(hazardName: hazardTypes[selectedHazardType], hazardType: hazardTypes[selectedHazardType], lat: hazardCoordinates.latitude, lon: hazardCoordinates.longitude)
+        
+        // 0.1 sec delay before updating
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            HazardApi().getHazards(completion: { (hazards) in
+                self.hazards = hazards
+            })
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                Text("Report Hazard")
+                Text("Report")
                     .font(.largeTitle)
                     .bold()
                     .foregroundColor(.white)
@@ -78,7 +90,7 @@ struct ReportView: View {
             Spacer()
             
             Button(action: {
-                HazardApi().postHazard(hazardName: hazardTypes[selectedHazardType], hazardType: hazardTypes[selectedHazardType], lat: hazardCoordinates.latitude, lon: hazardCoordinates.longitude)
+                postHazard()
                 showView.toggle()
             }, label: {
                 Image(systemName: "paperplane")
@@ -95,7 +107,6 @@ struct ReportView: View {
             .shadow(color: Color.gray.opacity(0.4), radius: 10, x: 0, y: 10)
         }
         .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.5))
-
         .background(Color.blue)
         .ignoresSafeArea()
     }
@@ -205,7 +216,7 @@ struct HazardSelectionView: View {
                                     .stroke(Color.white, lineWidth: 4)
                                 : nil
                             )
-                        Image(systemName: "hare")
+                        Image(systemName: "hammer")
                             .resizable()
                             .scaledToFit()
                             .frame(maxWidth: 44, maxHeight: 44)
@@ -237,12 +248,6 @@ struct HazardSelectionView: View {
 
             }
         }
-    }
-}
-
-struct ReportView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReportView(userLocation: CLLocationCoordinate2D(), showView: .constant(true))
     }
 }
 
@@ -293,5 +298,11 @@ struct ReportMapView: UIViewRepresentable {
             
             self.parent.annotatioCoordinatee = view.annotation!.coordinate
         }
+    }
+}
+
+struct ReportView_Previews: PreviewProvider {
+    static var previews: some View {
+        ReportView(userLocation: CLLocationCoordinate2D(), showView: .constant(true), hazards: .constant([Hazard.example]))
     }
 }

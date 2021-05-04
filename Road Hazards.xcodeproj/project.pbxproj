@@ -3,22 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311A1AA02624804E00061D54 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 311A1A9F2624804E00061D54 /* JWTDecode */; };
+		312D0FF82620B7710034D6E5 /* SmartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312D0FF72620B7710034D6E5 /* SmartView.swift */; };
 		3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131946825C062E000ED7533 /* Road_HazardsApp.swift */; };
 		3131946B25C062E000ED7533 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131946A25C062E000ED7533 /* ContentView.swift */; };
 		3131946D25C062E100ED7533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3131946C25C062E100ED7533 /* Assets.xcassets */; };
 		3131947025C062E100ED7533 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3131946F25C062E100ED7533 /* Preview Assets.xcassets */; };
 		3131947B25C062E100ED7533 /* Road_HazardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131947A25C062E100ED7533 /* Road_HazardsTests.swift */; };
 		3131948625C062E100ED7533 /* Road_HazardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131948525C062E100ED7533 /* Road_HazardsUITests.swift */; };
-		313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194AD25C06B1900ED7533 /* HazardCard.swift */; };
-		313194B325C0C5E100ED7533 /* HeaderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194B225C0C5E100ED7533 /* HeaderCard.swift */; };
-		315AD4BC25DFF52D004064D7 /* FilterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */; };
+		313194AE25C06B1900ED7533 /* HazardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313194AD25C06B1900ED7533 /* HazardCardView.swift */; };
+		31355FE4262DD93000CF1889 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31355FE3262DD93000CF1889 /* OnboardingView.swift */; };
 		315CA83E25E43E3400533A86 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA83D25E43E3400533A86 /* LocationManager.swift */; };
 		315CA84925E43EBD00533A86 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315CA84825E43EBD00533A86 /* MapView.swift */; };
-		31749E122604A68C00C3ADF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E112604A68C00C3ADF9 /* HomeView.swift */; };
+		3168D247261F471900F254FB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D246261F471900F254FB /* HomeView.swift */; };
+		3168D24C261F534200F254FB /* MiniHazardCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D24B261F534200F254FB /* MiniHazardCardView.swift */; };
+		3168D251261F5BA100F254FB /* LocationFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3168D250261F5BA100F254FB /* LocationFilterView.swift */; };
 		31749E172604A6FC00C3ADF9 /* TabNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E162604A6FC00C3ADF9 /* TabNavigationView.swift */; };
 		31749E1D2604A80E00C3ADF9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E1C2604A80E00C3ADF9 /* LoginView.swift */; };
 		31749E222604CF7B00C3ADF9 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31749E212604CF7B00C3ADF9 /* UserAuth.swift */; };
@@ -27,6 +30,7 @@
 		31751A5725D2EAF00030DB0F /* Votes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31751A5625D2EAF00030DB0F /* Votes.swift */; };
 		3197140125EED9B6006F82FE /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197140025EED9B6006F82FE /* ReportView.swift */; };
 		31EE2542260A855400C2EB0B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EE2541260A855400C2EB0B /* ProfileView.swift */; };
+		31EFB7FF262C7BAB00C1392F /* SmartHazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFB7FE262C7BAB00C1392F /* SmartHazard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		312D0FF72620B7710034D6E5 /* SmartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartView.swift; sourceTree = "<group>"; };
 		3131946525C062E000ED7533 /* Road Hazards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Road Hazards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3131946825C062E000ED7533 /* Road_HazardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsApp.swift; sourceTree = "<group>"; };
 		3131946A25C062E000ED7533 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,12 +64,13 @@
 		3131948125C062E100ED7533 /* Road HazardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Road HazardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3131948525C062E100ED7533 /* Road_HazardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Road_HazardsUITests.swift; sourceTree = "<group>"; };
 		3131948725C062E100ED7533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		313194AD25C06B1900ED7533 /* HazardCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazardCard.swift; sourceTree = "<group>"; };
-		313194B225C0C5E100ED7533 /* HeaderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCard.swift; sourceTree = "<group>"; };
-		315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenuView.swift; sourceTree = "<group>"; };
+		313194AD25C06B1900ED7533 /* HazardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HazardCardView.swift; sourceTree = "<group>"; };
+		31355FE3262DD93000CF1889 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		315CA83D25E43E3400533A86 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		315CA84825E43EBD00533A86 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		31749E112604A68C00C3ADF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3168D246261F471900F254FB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3168D24B261F534200F254FB /* MiniHazardCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniHazardCardView.swift; sourceTree = "<group>"; };
+		3168D250261F5BA100F254FB /* LocationFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFilterView.swift; sourceTree = "<group>"; };
 		31749E162604A6FC00C3ADF9 /* TabNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationView.swift; sourceTree = "<group>"; };
 		31749E1C2604A80E00C3ADF9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		31749E212604CF7B00C3ADF9 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 		31751A5625D2EAF00030DB0F /* Votes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Votes.swift; sourceTree = "<group>"; };
 		3197140025EED9B6006F82FE /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		31EE2541260A855400C2EB0B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		31EFB7FE262C7BAB00C1392F /* SmartHazard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHazard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311A1AA02624804E00061D54 /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +108,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		312D0FF32620B71D0034D6E5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3168D246261F471900F254FB /* HomeView.swift */,
+				3168D250261F5BA100F254FB /* LocationFilterView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		312D0FFC2620B7760034D6E5 /* Smart */ = {
+			isa = PBXGroup;
+			children = (
+				312D0FF72620B7710034D6E5 /* SmartView.swift */,
+				31EFB7FE262C7BAB00C1392F /* SmartHazard.swift */,
+			);
+			path = Smart;
+			sourceTree = "<group>";
+		};
 		3131945C25C062E000ED7533 = {
 			isa = PBXGroup;
 			children = (
@@ -126,12 +152,13 @@
 				3131946825C062E000ED7533 /* Road_HazardsApp.swift */,
 				3131946A25C062E000ED7533 /* ContentView.swift */,
 				31749E162604A6FC00C3ADF9 /* TabNavigationView.swift */,
-				31749E112604A68C00C3ADF9 /* HomeView.swift */,
+				31355FE2262DD91600CF1889 /* Onboarding */,
+				312D0FF32620B71D0034D6E5 /* Home */,
 				31749E1B2604A7EF00C3ADF9 /* Auth */,
 				319713FF25EED99B006F82FE /* Report */,
 				315CA83C25E43E2200533A86 /* Managers */,
-				31C5E68925E447EF0095D966 /* Header */,
 				31EE2540260A853800C2EB0B /* Profile */,
+				312D0FFC2620B7760034D6E5 /* Smart */,
 				31751A5225D2EA870030DB0F /* Hazards */,
 				31751A4D25D2E5470030DB0F /* Extensions.swift */,
 				315CA84825E43EBD00533A86 /* MapView.swift */,
@@ -168,6 +195,14 @@
 			path = "Road HazardsUITests";
 			sourceTree = "<group>";
 		};
+		31355FE2262DD91600CF1889 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				31355FE3262DD93000CF1889 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		315CA83C25E43E2200533A86 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				31751A5625D2EAF00030DB0F /* Votes.swift */,
-				313194AD25C06B1900ED7533 /* HazardCard.swift */,
+				313194AD25C06B1900ED7533 /* HazardCardView.swift */,
+				3168D24B261F534200F254FB /* MiniHazardCardView.swift */,
 				31751A3D25D2C7440030DB0F /* Hazard.swift */,
 			);
 			path = Hazards;
@@ -201,15 +237,6 @@
 				3197140025EED9B6006F82FE /* ReportView.swift */,
 			);
 			path = Report;
-			sourceTree = "<group>";
-		};
-		31C5E68925E447EF0095D966 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				315AD4BB25DFF52D004064D7 /* FilterMenuView.swift */,
-				313194B225C0C5E100ED7533 /* HeaderCard.swift */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		31EE2540260A853800C2EB0B /* Profile */ = {
@@ -237,6 +264,7 @@
 			);
 			name = "Road Hazards";
 			packageProductDependencies = (
+				311A1A9F2624804E00061D54 /* JWTDecode */,
 			);
 			productName = "Road Hazards";
 			productReference = 3131946525C062E000ED7533 /* Road Hazards.app */;
@@ -310,6 +338,7 @@
 			);
 			mainGroup = 3131945C25C062E000ED7533;
 			packageReferences = (
+				311A1A9E2624804E00061D54 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
 			);
 			productRefGroup = 3131946625C062E000ED7533 /* Products */;
 			projectDirPath = "";
@@ -354,19 +383,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				31749E222604CF7B00C3ADF9 /* UserAuth.swift in Sources */,
-				313194B325C0C5E100ED7533 /* HeaderCard.swift in Sources */,
 				3131946B25C062E000ED7533 /* ContentView.swift in Sources */,
-				315AD4BC25DFF52D004064D7 /* FilterMenuView.swift in Sources */,
+				3168D24C261F534200F254FB /* MiniHazardCardView.swift in Sources */,
 				3197140125EED9B6006F82FE /* ReportView.swift in Sources */,
-				313194AE25C06B1900ED7533 /* HazardCard.swift in Sources */,
+				313194AE25C06B1900ED7533 /* HazardCardView.swift in Sources */,
+				31EFB7FF262C7BAB00C1392F /* SmartHazard.swift in Sources */,
 				3131946925C062E000ED7533 /* Road_HazardsApp.swift in Sources */,
+				3168D251261F5BA100F254FB /* LocationFilterView.swift in Sources */,
 				31751A3E25D2C7440030DB0F /* Hazard.swift in Sources */,
 				31EE2542260A855400C2EB0B /* ProfileView.swift in Sources */,
+				312D0FF82620B7710034D6E5 /* SmartView.swift in Sources */,
+				31355FE4262DD93000CF1889 /* OnboardingView.swift in Sources */,
 				31749E172604A6FC00C3ADF9 /* TabNavigationView.swift in Sources */,
 				31749E1D2604A80E00C3ADF9 /* LoginView.swift in Sources */,
+				3168D247261F471900F254FB /* HomeView.swift in Sources */,
 				31751A4E25D2E5470030DB0F /* Extensions.swift in Sources */,
 				315CA84925E43EBD00533A86 /* MapView.swift in Sources */,
-				31749E122604A68C00C3ADF9 /* HomeView.swift in Sources */,
 				315CA83E25E43E3400533A86 /* LocationManager.swift in Sources */,
 				31751A5725D2EAF00030DB0F /* Votes.swift in Sources */,
 			);
@@ -684,6 +716,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		311A1A9E2624804E00061D54 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		311A1A9F2624804E00061D54 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 311A1A9E2624804E00061D54 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3131945D25C062E000ED7533 /* Project object */;
 }

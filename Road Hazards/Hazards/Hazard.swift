@@ -11,19 +11,23 @@ struct Hazard: Codable {
     var hazardId:String?
     var hazardName:String?
     var hazardType:String?
+    var description:String?
     var hazardRating:HazardRating?
     var hazardLocation:HazardLocation?
+    var source:String?
+    var commonHazard:Bool?
     var creationTime:String?
+    var endDate:String?
     var distance: Int?
     
     static var example: Hazard {
-        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", hazardRating: HazardRating(up: 10, down: 2), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), creationTime: "2021-02-09T14:55:09.213+00:00", distance: 5)
+        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", description: "Hazard description", hazardRating: HazardRating(up: [], down: []), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), source: "AA", commonHazard: false, creationTime: "2021-04-08T14:55:09.213+00:00", endDate: "2021-05-08T14:55:09.213+00:00", distance: 10)
     }
 }
 
 struct HazardRating: Codable {
-    var up:Int?
-    var down:Int?
+    var up:[String]?
+    var down:[String]?
 }
 
 struct HazardLocation: Codable {
@@ -33,12 +37,17 @@ struct HazardLocation: Codable {
 
 
 class HazardApi {
-    let url: String = "http://road-hazard-alert-system.eu-west-1.elasticbeanstalk.com/hazard"
+    let url: String = "http://road-hazard.eu-west-1.elasticbeanstalk.com/hazard"
     let token: String = UserDefaults.standard.string(forKey: "token")!
     
-    func getHazards(hours: Int, latitude: Double, longitude: Double, radius: Double, completion: @escaping ([Hazard]) -> ()) {
-        let url = URL(string: "\(self.url)/\(hours)?latitude=\(latitude)&longitude=\(longitude)&radius=\(radius)")!
-        print(url)
+    func getHazards(completion: @escaping ([Hazard]) -> ()) {
+        let hours = UserDefaults.standard.integer(forKey: "time")
+        let latitude = UserDefaults.standard.double(forKey: "lat")
+        let longitude = UserDefaults.standard.double(forKey: "lon")
+        let radius = UserDefaults.standard.double(forKey: "distance")
+        let common = UserDefaults.standard.bool(forKey: "common")
+        
+        let url = URL(string: "\(self.url)/\(hours)?latitude=\(latitude)&longitude=\(longitude)&radius=\(radius)&common=\(common)")!
 
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -46,7 +55,22 @@ class HazardApi {
         URLSession.shared.dataTask(with: request) { (data, _, _) in
 
             let hazards = try! JSONDecoder().decode([Hazard].self, from: data!)
-            print(hazards)
+            DispatchQueue.main.async {
+                completion(hazards)
+            }
+        }
+        .resume()
+    }
+    
+    func getHazardsByUser(completion: @escaping ([Hazard]) -> ()) {
+        let url = URL(string: "\(self.url)/?user=\(UserAuth().getUsernameFromToken())")!
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { (data, _, _) in
+
+            let hazards = try! JSONDecoder().decode([Hazard].self, from: data!)
             DispatchQueue.main.async {
                 completion(hazards)
             }
@@ -55,7 +79,7 @@ class HazardApi {
     }
     
     func postHazard(hazardName: String, hazardType: String, lat: Double, lon: Double) {
-        let hazardDataModel = Hazard(hazardName: hazardName, hazardType: hazardType, hazardLocation: HazardLocation(longitude: lon, latitude: lat))
+        let hazardDataModel = Hazard(hazardName: hazardName, hazardType: hazardType, hazardLocation: HazardLocation(longitude: lon, latitude: lat), source: UserAuth().getUsernameFromToken())
         
         guard let jsonData = try? JSONEncoder().encode(hazardDataModel) else {
             print("Error: Trying to convert model to JSON data")
@@ -83,7 +107,8 @@ class HazardApi {
     }
     
     func voteHazard(hazardId: String, vote: String) {
-        var request = URLRequest(url: URL(string: url + "/\(hazardId)/\(vote)")!)
+        let username = UserAuth().getUsernameFromToken()
+        var request = URLRequest(url: URL(string: url + "/\(hazardId)/\(vote)?user=\(username)")!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -100,5 +125,19 @@ class HazardApi {
                 return
             }
         }.resume()
+    }
+    
+    func setQueryDefaults(time: Int, distance: Double, lat: Double, lon: Double) {
+        UserDefaults.standard.set(time, forKey: "time")
+        
+        UserDefaults.standard.set(distance, forKey: "distance")
+        
+        UserDefaults.standard.set(lat, forKey: "lat")
+        
+        UserDefaults.standard.set(lon, forKey: "lon")
+    }
+    
+    func setShowCommonHazard(set: Bool) {
+        UserDefaults.standard.set(set, forKey: "common")
     }
 }
