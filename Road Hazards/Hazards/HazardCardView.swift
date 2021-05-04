@@ -147,7 +147,15 @@ struct HazardCardView: View {
                                     }
                                     
                                     
-                                    if (hazard.source == "AA") {
+                                    if (hazard.commonHazard!) {
+                                        Text("Common")
+                                            .foregroundColor(.white)
+                                            .font(.subheadline)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 2)
+                                            .background(Color.green)
+                                            .cornerRadius(5.0)
+                                    } else if (hazard.source == "AA") {
                                         Text(timeSinceHazard(creationTime: String(hazard.endDate!.dropLast(10))).dropFirst())
                                             .foregroundColor(.blue)
                                             .font(.subheadline)
@@ -254,9 +262,10 @@ func getHazardImage(hazardType: String) -> String {
 
 func timeSinceHazard (creationTime: String) -> String{
     let dateFormatter = DateFormatter()
-    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.locale = Locale(identifier: "en_GB")
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-    let date = dateFormatter.date(from:String(creationTime))!
+    var date = dateFormatter.date(from:String(creationTime))!
+    date = date + (60 * 60)
     return date.timeAgo()
 }
 

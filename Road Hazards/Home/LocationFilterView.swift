@@ -62,15 +62,20 @@ struct LocationFilterView: View {
                     })
                     .padding()
                     
-                    Spacer()
-                    
-                    Slider(value: $distance, in: 5...100, step: 5)
-                        .accentColor(.white)
-                        .padding()
-                        .onChange(of: distance, perform: { value in
-                            HazardApi().setQueryDefaults(time: timeSelector, distance: distance, lat: userLocation.latitude, lon: userLocation.longitude)
-                            getHazards()
+                    HStack {
+                        Slider(value: $distance, in: 5...100, step: 5)
+                            .accentColor(.white)
+                            .padding()
+                            .onChange(of: distance, perform: { value in
+                                HazardApi().setQueryDefaults(time: timeSelector, distance: distance, lat: userLocation.latitude, lon: userLocation.longitude)
+                                getHazards()
                         })
+                        
+                        Text("\(Int(distance)) km")
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                    .padding()
                         
                 }
             } else {

@@ -42,7 +42,9 @@ struct TabNavigationView: View {
                 }
             }
             .onAppear {
-                HazardApi().setQueryDefaults(time: 4, distance: 30, lat: userLocation.latitude, lon: userLocation.longitude)
+                let hazardApi = HazardApi()
+                hazardApi.setQueryDefaults(time: 4, distance: 30, lat: userLocation.latitude, lon: userLocation.longitude)
+                hazardApi.setShowCommonHazard(set: false)
             }
             
             if showTabBar {

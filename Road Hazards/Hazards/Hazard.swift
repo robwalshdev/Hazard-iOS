@@ -15,12 +15,13 @@ struct Hazard: Codable {
     var hazardRating:HazardRating?
     var hazardLocation:HazardLocation?
     var source:String?
+    var commonHazard:Bool?
     var creationTime:String?
     var endDate:String?
     var distance: Int?
     
     static var example: Hazard {
-        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", description: "Hazard description", hazardRating: HazardRating(up: [], down: []), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), source: "AA", creationTime: "2021-04-08T14:55:09.213+00:00", endDate: "2021-05-08T14:55:09.213+00:00", distance: 10)
+        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", description: "Hazard description", hazardRating: HazardRating(up: [], down: []), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), source: "AA", commonHazard: false, creationTime: "2021-04-08T14:55:09.213+00:00", endDate: "2021-05-08T14:55:09.213+00:00", distance: 10)
     }
 }
 
@@ -44,8 +45,9 @@ class HazardApi {
         let latitude = UserDefaults.standard.double(forKey: "lat")
         let longitude = UserDefaults.standard.double(forKey: "lon")
         let radius = UserDefaults.standard.double(forKey: "distance")
+        let common = UserDefaults.standard.bool(forKey: "common")
         
-        let url = URL(string: "\(self.url)/\(hours)?latitude=\(latitude)&longitude=\(longitude)&radius=\(radius)")!
+        let url = URL(string: "\(self.url)/\(hours)?latitude=\(latitude)&longitude=\(longitude)&radius=\(radius)&common=\(common)")!
 
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -54,7 +56,6 @@ class HazardApi {
 
             let hazards = try! JSONDecoder().decode([Hazard].self, from: data!)
             DispatchQueue.main.async {
-                print(hazards)
                 completion(hazards)
             }
         }
@@ -106,7 +107,7 @@ class HazardApi {
     }
     
     func voteHazard(hazardId: String, vote: String) {
-        var username = UserAuth().getUsernameFromToken()
+        let username = UserAuth().getUsernameFromToken()
         var request = URLRequest(url: URL(string: url + "/\(hazardId)/\(vote)?user=\(username)")!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -134,5 +135,9 @@ class HazardApi {
         UserDefaults.standard.set(lat, forKey: "lat")
         
         UserDefaults.standard.set(lon, forKey: "lon")
+    }
+    
+    func setShowCommonHazard(set: Bool) {
+        UserDefaults.standard.set(set, forKey: "common")
     }
 }

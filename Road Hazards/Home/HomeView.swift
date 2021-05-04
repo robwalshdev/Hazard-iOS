@@ -20,6 +20,7 @@ struct HomeView: View {
     @State private var filterHazards: Bool = false
     
     @State private var showSmartHazardsView: Bool = false
+    @State private var showCommonHazards: Bool = UserDefaults.standard.bool(forKey: "common")
     
     @Binding var showTabBar: Bool
     
@@ -107,22 +108,31 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        Text("\(Int(UserDefaults.standard.double(forKey: "distance"))) km")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(Color.blue)
-                            .clipShape(Capsule())
-                            .shadow(color: Color.blue.opacity(0.1), radius: 10, x: 0, y: 10)
-                        Text("\(UserDefaults.standard.integer(forKey: "time")) hrs")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(Color.blue)
-                            .clipShape(Capsule())
-                            .shadow(color: Color.blue.opacity(0.1), radius: 10, x: 0, y: 10)
+                        Button(action: {
+                            showCommonHazards.toggle()
+                            HazardApi().setShowCommonHazard(set: showCommonHazards)
+                            getHazards()
+                        }, label: {
+                            if showCommonHazards {
+                                Text("Common")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 5)
+                                    .background(Color.blue)
+                                    .clipShape(Capsule())
+                            } else {
+                                Text("Common")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.blue)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 5)
+                                    .overlay(
+                                        Capsule()
+                                            .stroke(Color.blue, lineWidth: 3)
+                                    )
+                            }
+                        })
                     }
                     .padding(.horizontal)
                     .padding(.top)
@@ -154,7 +164,6 @@ struct HomeView: View {
                             .padding(.bottom, screen.width  / 2.5)
                     }
                     .padding(.top)
-                    
                     
                 }
                 .padding(.top)
