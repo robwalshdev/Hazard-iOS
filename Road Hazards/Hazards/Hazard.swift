@@ -20,13 +20,13 @@ struct Hazard: Codable {
     var distance: Int?
     
     static var example: Hazard {
-        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", description: "Hazard description", hazardRating: HazardRating(up: 10, down: 2), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), source: "AA", creationTime: "2021-04-08T14:55:09.213+00:00", endDate: "2021-05-08T14:55:09.213+00:00", distance: 10)
+        Hazard(hazardId: "1", hazardName: "Heavy Traffic", hazardType: "Traffic", description: "Hazard description", hazardRating: HazardRating(up: [], down: []), hazardLocation: HazardLocation(longitude: -9.046897, latitude: 53.274247), source: "AA", creationTime: "2021-04-08T14:55:09.213+00:00", endDate: "2021-05-08T14:55:09.213+00:00", distance: 10)
     }
 }
 
 struct HazardRating: Codable {
-    var up:Int?
-    var down:Int?
+    var up:[String]?
+    var down:[String]?
 }
 
 struct HazardLocation: Codable {
@@ -54,6 +54,7 @@ class HazardApi {
 
             let hazards = try! JSONDecoder().decode([Hazard].self, from: data!)
             DispatchQueue.main.async {
+                print(hazards)
                 completion(hazards)
             }
         }
@@ -105,7 +106,8 @@ class HazardApi {
     }
     
     func voteHazard(hazardId: String, vote: String) {
-        var request = URLRequest(url: URL(string: url + "/\(hazardId)/\(vote)")!)
+        var username = UserAuth().getUsernameFromToken()
+        var request = URLRequest(url: URL(string: url + "/\(hazardId)/\(vote)?user=\(username)")!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")

@@ -69,7 +69,7 @@ struct HazardCardView: View {
                         updateHazards()
                     }, label: {
                         VStack {
-                            Text("\((hazard.hazardRating?.down ?? 0))")
+                            Text("\(hazard.hazardRating!.down!.count)")
                                 .font(.title3)
                                 .bold()
                                 .foregroundColor(.gray)
@@ -92,7 +92,7 @@ struct HazardCardView: View {
                         updateHazards()
                     }, label: {
                         VStack {
-                            Text("\((hazard.hazardRating?.up) ?? 0)")
+                            Text("\(hazard.hazardRating!.up!.count)")
                                 .font(.title3)
                                 .bold()
                                 .foregroundColor(.gray)
@@ -205,7 +205,7 @@ struct HazardCardView: View {
                 Spacer()
                     .frame(height: 15)
                 
-                Votes(upVotes: hazard.hazardRating!.up!, downVotes: hazard.hazardRating!.down!)
+                Votes(upVotes: hazard.hazardRating!.up!.count, downVotes: hazard.hazardRating!.down!.count)
                     .opacity(show ? 0 : 1)
                     .frame(width: screen.width / 2)
             }
@@ -217,16 +217,19 @@ struct HazardCardView: View {
     func updateHazards() {
         let hazardApi = HazardApi()
         
-        if isUserHazard {
-            hazardApi.getHazardsByUser(completion: { (hazards) in
+        // 0.1 sec delay before updating
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if isUserHazard {
+                hazardApi.getHazardsByUser(completion: { (hazards) in
+                    self.hazards = hazards
+                })
+                return
+            }
+            
+            hazardApi.getHazards(completion: { (hazards) in
                 self.hazards = hazards
             })
-            return
         }
-        
-        hazardApi.getHazards(completion: { (hazards) in
-            self.hazards = hazards
-        })
     }
 }
 
